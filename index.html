@@ -220,8 +220,9 @@ html{color-scheme:light}
   </section>
 </main>
 <script>
-// Paste the Apps Script web app URL (ends with /exec) here after deploying cloud/Code.gs
-var ENDPOINT = "PASTE_APPS_SCRIPT_URL_HERE";
+// Supabase project URL and the public anon / publishable key (safe to publish; visitors can only call register())
+var SUPABASE_URL = "https://osbnvoucfyccjlcqkpsh.supabase.co";
+var SUPABASE_KEY = "sb_publishable_opEH-Ks86qDpe6XhXRFWAw_gqSlFg3z";
 var S = {
   ar: {
     eyebrow: "AI Learning Circle", title: "استمارة الانضمام",
@@ -386,8 +387,8 @@ $("regForm").addEventListener("submit", function (ev) {
   if (Object.keys(errs).length) return;
   var btn = $("submitBtn"); btn.disabled = true; btn.textContent = t("sending");
   var body = Object.assign({}, r, { lang: lang, website: $("website").value });
-  fetch(ENDPOINT, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(body) })
-    .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { status: j.error === "too_many" ? 429 : (j.error === "invalid" ? 400 : res.status), j: j }; }); })
+  fetch(SUPABASE_URL + "/rest/v1/rpc/register", { method: "POST", headers: { "Content-Type": "application/json", "apikey": SUPABASE_KEY }, body: JSON.stringify({ d: body }) })
+    .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { status: j && j.error === "too_many" ? 429 : (j && j.error === "invalid" ? 400 : (res.ok ? 200 : res.status)), j: j }; }); })
     .then(function (x) {
       btn.disabled = false; btn.textContent = t("submit");
       if (x.j && x.j.ok) { lastUpdated = !!x.j.updated; renderDone(lastUpdated); window.scrollTo(0, 0); }
