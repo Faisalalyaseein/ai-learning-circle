@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AI Learning Circle Dashboard</title>
+<style>
+:root{--bg:#F8F6EC;--card:#fff;--ink:#111;--mute:#5C584B;--line:#CCC5AA;--gold:#D2B356;--blue:#56A1D2;--soft:#F0EDDC;--bad:#B3261E}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 "Poppins","Noto Kufi Arabic",system-ui,sans-serif;padding:20px max(16px,env(safe-area-inset-left,0px))}
+h1{margin:0;font-size:22px}.sub{color:var(--mute);margin:2px 0 0}
+.top{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.login{max-width:380px;margin:12vh auto 0}
+label{display:block;font-weight:600;margin:10px 0 4px}
+input,select,button{font:inherit}
+input[type=email],input[type=password],input[type=search]{width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+button{cursor:pointer;border:0;border-radius:8px;padding:9px 14px;font-weight:600;background:var(--gold);color:#111}
+button.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+button.dark{background:#111;color:var(--gold)}
+button.danger{background:transparent;border:1px solid var(--bad);color:var(--bad);padding:3px 9px;font-weight:500}
+button.danger.sure{background:var(--bad);color:#fff}
+.err{color:var(--bad);min-height:1.3em;margin-top:8px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:14px}
+.stat b{display:block;font-size:24px}.stat span{color:var(--mute);font-size:12px}
+.bars{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+.bars .card{flex:1 1 260px}.bars h3{margin:0 0 8px;font-size:13px;color:var(--mute);font-weight:600}
+.bar{display:flex;align-items:center;gap:8px;margin:3px 0;font-size:12px}.bar i{display:block;height:8px;border-radius:4px;background:var(--blue);min-width:3px}.bar span:first-child{width:130px;flex:none}
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.tools input[type=search]{max-width:260px}.tools select{padding:8px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.sp{flex:1}
+.wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%}
+th,td{padding:8px 10px;border-bottom:1px solid #E6E1CF;text-align:start;vertical-align:top;white-space:nowrap}
+th{background:#111;color:var(--gold);font-weight:600;position:sticky;top:0}
+td.long{white-space:normal;min-width:220px;max-width:380px}
+td select{padding:3px 6px;border:1px solid var(--line);border-radius:6px;background:#fff}
+a{color:#1d6fa5}.num{direction:ltr;unicode-bidi:plaintext}
+.note{color:var(--mute);font-size:12px;margin:10px 0}
+.toast{position:fixed;inset-inline-end:16px;bottom:16px;background:#111;color:var(--gold);padding:10px 14px;border-radius:8px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+[hidden]{display:none!important}
+</style></head><body>
+
+<section id="loginView" class="card login">
+  <h1>AI Learning Circle</h1><p class="sub">Dashboard sign in</p>
+  <form id="loginForm">
+    <label for="em">Email</label><input id="em" type="email" autocomplete="username" required>
+    <label for="pw">Password</label><input id="pw" type="password" autocomplete="current-password" required>
+    <div class="err" id="loginErr"></div>
+    <button type="submit" id="loginBtn">Sign in</button>
+  </form>
+</section>
+
+<main id="appView" hidden>
+  <div class="top">
+    <div><h1>AI Learning Circle applications</h1><p class="sub" id="seatsLine"></p></div>
+    <div class="tools">
+      <button class="ghost" id="refreshBtn" type="button">Refresh</button>
+      <button class="ghost" id="outBtn" type="button">Sign out</button>
+    </div>
+  </div>
+  <div class="stats" id="stats"></div>
+  <div class="bars"><div class="card"><h3>By field</h3><div id="byField"></div></div><div class="card"><h3>By AI experience</h3><div id="byLevel"></div></div><div class="card"><h3>By tool</h3><div id="byTool"></div></div></div>
+  <div class="tools">
+    <input type="search" id="q" placeholder="Search name, number, email...">
+    <select id="st"><option value="">All statuses</option></select>
+    <span class="sp"></span>
+    <button class="dark" id="xNames" type="button">Excel: names and numbers</button>
+    <button id="xAll" type="button">Excel: everything</button>
+    <button class="ghost" id="copyNums" type="button">Copy numbers</button>
+  </div>
+  <div class="note" id="shown"></div>
+  <div class="wrap"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+  <p class="note">Exports contain the rows currently shown (use the search and status filter first). Phone numbers are saved as text so Excel keeps the + sign. Personal data: share the file only with the organising team.</p>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+var SUPABASE_URL = "https://osbnvoucfyccjlcqkpsh.supabase.co";
+var SUPABASE_KEY = "sb_publishable_opEH-Ks86qDpe6XhXRFWAw_gqSlFg3z";
+var SEATS = 15;
+var STATUSES = ["New", "Contacted", "Accepted", "Waitlist"];
+var COLS = [["id","#"],["created_at","Submitted (UTC)"],["status","Status"],["name","Full name"],["whatsapp","WhatsApp"],["email","Email"],["field","Field"],["org","Organisation or university"],["area","Area"],["ai_level","AI experience"],["tools","AI tools"],["why","Why join"],["problem","Work problem"],["pitch","Present an idea"],["days","Days"],["hours","Hours"],["attend","In-person attendance"],["lang","Form language"]];
+var $ = function (id) { return document.getElementById(id); };
+var rows = [], shown = [], sess = null;
+
+function toast(t) { var e = $("toast"); e.textContent = t; e.classList.add("on"); setTimeout(function () { e.classList.remove("on"); }, 2200); }
+function save() { try { sessionStorage.setItem("ailc_sess", JSON.stringify(sess)); } catch (e) {} }
+function load() { try { sess = JSON.parse(sessionStorage.getItem("ailc_sess")); } catch (e) { sess = null; } }
+
+function auth(body, grant) {
+  return fetch(SUPABASE_URL + "/auth/v1/token?grant_type=" + grant, { method: "POST", headers: { "apikey": SUPABASE_KEY, "Content-Type": "application/json" }, body: JSON.stringify(body) })
+    .then(function (r) { return r.json().then(function (j) { if (!r.ok || !j.access_token) throw new Error(j.error_description || j.msg || "Sign in failed"); return j; }); })
+    .then(function (j) { sess = { access: j.access_token, refresh: j.refresh_token }; save(); });
+}
+function api(path, opt, retry) {
+  opt = opt || {}; opt.headers = Object.assign({ "apikey": SUPABASE_KEY, "Authorization": "Bearer " + sess.access, "Content-Type": "application/json" }, opt.headers || {});
+  return fetch(SUPABASE_URL + "/rest/v1/" + path, opt).then(function (r) {
+    if (r.status === 401 && !retry && sess.refresh) {
+      return auth({ refresh_token: sess.refresh }, "refresh_token").then(function () { return api(path, opt, true); });
+    }
+    return r;
+  });
+}
+
+function show(v) { $("loginView").hidden = v !== "login"; $("appView").hidden = v !== "app"; }
+function signOut() { sess = null; try { sessionStorage.removeItem("ailc_sess"); } catch (e) {} rows = []; show("login"); }
+
+function fetchRows() {
+  return api("rpc/is_admin", { method: "POST", body: "{}" }).then(function (r) { return r.ok ? r.json() : false; }).then(function (ok) {
+    if (ok !== true) { signOut(); $("loginErr").textContent = "This account is not an admin. Run admin.sql for it."; throw new Error("not admin"); }
+    return api("registrations?select=*&order=id.asc");
+  }).then(function (r) { if (!r.ok) throw new Error("Could not load data (" + r.status + ")"); return r.json(); })
+    .then(function (d) { rows = d; render(); show("app"); });
+}
+
+function tally(el, items) {
+  var m = {}; items.forEach(function (k) { if (k) m[k] = (m[k] || 0) + 1; });
+  var keys = Object.keys(m).sort(function (a, b) { return m[b] - m[a]; }), max = Math.max.apply(null, keys.map(function (k) { return m[k]; }).concat([1]));
+  el.innerHTML = "";
+  if (!keys.length) { el.textContent = "No data yet."; return; }
+  keys.forEach(function (k) {
+    var d = document.createElement("div"); d.className = "bar";
+    var a = document.createElement("span"); a.textContent = k;
+    var b = document.createElement("i"); b.style.width = Math.round(m[k] / max * 120) + "px";
+    var c = document.createElement("span"); c.textContent = m[k];
+    d.appendChild(a); d.appendChild(b); d.appendChild(c); el.appendChild(d);
+  });
+}
+
+function render() {
+  var cnt = function (s) { return rows.filter(function (r) { return r.status === s; }).length; };
+  $("seatsLine").textContent = rows.length + " applications, " + SEATS + " seats. Accepted: " + cnt("Accepted") + ", waitlist: " + cnt("Waitlist");
+  var st = $("stats"); st.innerHTML = "";
+  [["Total", rows.length], ["New", cnt("New")], ["Contacted", cnt("Contacted")], ["Accepted", cnt("Accepted") + " / " + SEATS], ["Waitlist", cnt("Waitlist")]].forEach(function (x) {
+    var d = document.createElement("div"); d.className = "card stat"; var b = document.createElement("b"); b.textContent = x[1]; var s = document.createElement("span"); s.textContent = x[0]; d.appendChild(b); d.appendChild(s); st.appendChild(d);
+  });
+  tally($("byField"), rows.map(function (r) { return r.field; }));
+  tally($("byLevel"), rows.map(function (r) { return r.ai_level; }));
+  var tools = []; rows.forEach(function (r) { (r.tools || "").split(", ").forEach(function (t) { tools.push(t); }); });
+  tally($("byTool"), tools);
+  drawTable();
+}
+
+function filtered() {
+  var q = $("q").value.trim().toLowerCase(), s = $("st").value;
+  return rows.filter(function (r) {
+    if (s && r.status !== s) return false;
+    if (!q) return true;
+    return [r.name, r.whatsapp, r.email, r.org, r.area, r.field].join(" ").toLowerCase().indexOf(q) >= 0;
+  });
+}
+
+function drawTable() {
+  shown = filtered();
+  $("shown").textContent = "Showing " + shown.length + " of " + rows.length;
+  var th = $("tbl").tHead; th.innerHTML = "";
+  var hr = document.createElement("tr");
+  COLS.forEach(function (c) { var t = document.createElement("th"); t.textContent = c[1]; hr.appendChild(t); });
+  hr.appendChild(document.createElement("th")); th.appendChild(hr);
+  var tb = $("tbl").tBodies[0]; tb.innerHTML = "";
+  if (!shown.length) { var e = document.createElement("tr"), td = document.createElement("td"); td.colSpan = COLS.length + 1; td.textContent = "No applications to show."; e.appendChild(td); tb.appendChild(e); return; }
+  shown.forEach(function (r) {
+    var tr = document.createElement("tr");
+    COLS.forEach(function (c) {
+      var td = document.createElement("td"), k = c[0], v = r[k] == null ? "" : r[k];
+      if (k === "why" || k === "problem") td.className = "long";
+      if (k === "status") {
+        var sel = document.createElement("select");
+        STATUSES.forEach(function (s) { var o = document.createElement("option"); o.textContent = s; if (s === r.status) o.selected = true; sel.appendChild(o); });
+        sel.addEventListener("change", function () { setStatus(r, sel.value, sel); });
+        td.appendChild(sel);
+      } else if (k === "whatsapp") {
+        var a = document.createElement("a"); a.className = "num"; a.textContent = v; a.target = "_blank"; a.rel = "noopener"; a.href = "https://wa.me/" + String(v).replace(/\D/g, ""); td.appendChild(a);
+      } else if (k === "created_at") { td.textContent = String(v).replace("T", " ").slice(0, 16); }
+      else { td.textContent = v; td.setAttribute("dir", "auto"); }
+      tr.appendChild(td);
+    });
+    var dt = document.createElement("td"), del = document.createElement("button"); del.className = "danger"; del.textContent = "Delete";
+    var timer;
+    del.addEventListener("click", function () {
+      if (!del.classList.contains("sure")) { del.classList.add("sure"); del.textContent = "Sure?"; timer = setTimeout(function () { del.classList.remove("sure"); del.textContent = "Delete"; }, 3000); return; }
+      clearTimeout(timer); removeRow(r);
+    });
+    dt.appendChild(del); tr.appendChild(dt); tb.appendChild(tr);
+  });
+}
+
+function setStatus(r, s, sel) {
+  var old = r.status; sel.disabled = true;
+  api("registrations?id=eq." + r.id, { method: "PATCH", headers: { "Prefer": "return=representation" }, body: JSON.stringify({ status: s, updated_at: new Date().toISOString() }) })
+    .then(function (x) { return x.ok ? x.json() : Promise.reject(); })
+    .then(function (d) { if (!d.length) throw 0; r.status = s; sel.disabled = false; render(); toast("Saved"); })
+    .catch(function () { sel.disabled = false; sel.value = old; toast("Not saved"); });
+}
+function removeRow(r) {
+  api("registrations?id=eq." + r.id, { method: "DELETE", headers: { "Prefer": "return=representation" } })
+    .then(function (x) { return x.ok ? x.json() : Promise.reject(); })
+    .then(function (d) { if (!d.length) throw 0; rows = rows.filter(function (x) { return x.id !== r.id; }); render(); toast("Deleted"); })
+    .catch(function () { toast("Not deleted"); });
+}
+
+function stamp() { var d = new Date(); return d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0"); }
+function exportXlsx(cols, name) {
+  if (!shown.length) { toast("Nothing to export"); return; }
+  var aoa = [cols.map(function (c) { return c[1]; })];
+  shown.forEach(function (r) { aoa.push(cols.map(function (c) { var v = r[c[0]]; if (c[0] === "created_at") v = String(v || "").replace("T", " ").slice(0, 16); return v == null ? "" : String(v); })); });
+  var ws = XLSX.utils.aoa_to_sheet(aoa);
+  ws["!cols"] = cols.map(function (c) { return { wch: { why: 50, problem: 50, email: 28, org: 28, name: 26, whatsapp: 18, tools: 28, hours: 34, days: 24 }[c[0]] || 18 }; });
+  var wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, ws, "Applications");
+  XLSX.writeFile(wb, name + "_" + stamp() + ".xlsx");
+  toast("Excel file downloaded (" + shown.length + " rows)");
+}
+function pick(keys) { return COLS.filter(function (c) { return keys.indexOf(c[0]) >= 0; }); }
+
+$("loginForm").addEventListener("submit", function (ev) {
+  ev.preventDefault(); $("loginErr").textContent = ""; $("loginBtn").disabled = true;
+  auth({ email: $("em").value.trim(), password: $("pw").value }, "password")
+    .then(fetchRows).catch(function (e) { if (e.message !== "not admin") $("loginErr").textContent = e.message; })
+    .then(function () { $("loginBtn").disabled = false; $("pw").value = ""; });
+});
+$("outBtn").addEventListener("click", signOut);
+$("refreshBtn").addEventListener("click", function () { fetchRows().then(function () { toast("Refreshed"); }).catch(function () { toast("Could not refresh"); }); });
+$("q").addEventListener("input", drawTable); $("st").addEventListener("change", drawTable);
+$("xNames").addEventListener("click", function () { exportXlsx(pick(["name", "whatsapp"]), "AILC_names_numbers"); });
+$("xAll").addEventListener("click", function () { exportXlsx(COLS, "AILC_applications"); });
+$("copyNums").addEventListener("click", function () {
+  var t = shown.map(function (r) { return r.name + "\t" + r.whatsapp; }).join("\n");
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast("Copied " + shown.length + " rows"); }, function () { toast("Copy not allowed here"); });
+});
+STATUSES.forEach(function (s) { var o = document.createElement("option"); o.value = s; o.textContent = s; $("st").appendChild(o); });
+load(); if (sess && sess.access) { fetchRows().catch(function () { show("login"); }); }
+</script></body></html>
