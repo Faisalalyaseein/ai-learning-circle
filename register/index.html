@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="ar"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AI Learning Circle Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one calm column, a sheet with three short sections, a result card after sending, and an organiser table at the foot. */
+:root {
+  --bg: #F8F6EC;
+  --surface: #FFFFFF;
+  --sand: #F0EBE0;
+  --ink: #111111;
+  --muted: #5C584B;
+  --line: #CCC5AA;
+  --gold: #D2B356;
+  --gold-text: #7A5F12;
+  --blue: #2F7DB0;
+  --danger: #B3261E;
+  --ok: #1F6B45;
+  --field: #FFFFFF;
+  --on-gold: #111111;
+  --f-latin: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+  --f-ar: 'Noto Kufi Arabic', 'Segoe UI', Tahoma, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14130F; --surface: #1E1C17; --sand: #2A2720; --ink: #F4F1E6; --muted: #B8B29E; --line: #4A4637;
+    --gold: #D2B356; --gold-text: #E2C673; --blue: #6DB4E0; --danger: #FF8A80; --ok: #6FD3A0; --field: #17160F; --on-gold: #111111;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14130F; --surface: #1E1C17; --sand: #2A2720; --ink: #F4F1E6; --muted: #B8B29E; --line: #4A4637;
+  --gold: #D2B356; --gold-text: #E2C673; --blue: #6DB4E0; --danger: #FF8A80; --ok: #6FD3A0; --field: #17160F; --on-gold: #111111;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-latin); font-size: 15px; line-height: 1.6; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 48px; }
+#app { max-width: 680px; margin: 0 auto; }
+#app[lang="ar"] { font-family: var(--f-ar); line-height: 1.85; }
+#app[lang="ar"] h1, #app[lang="ar"] h2, #app[lang="ar"] .eyebrow, #app[lang="ar"] button { letter-spacing: 0; }
+
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
+#app[lang="ar"] .eyebrow { text-transform: none; }
+.lang { font: inherit; font-size: 13px; font-weight: 600; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.lang:hover { border-color: var(--gold); }
+h1 { font-size: 30px; line-height: 1.2; margin: 6px 0 8px; font-weight: 700; text-wrap: balance; }
+.sub { color: var(--muted); margin: 0 0 14px; max-width: 60ch; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
+.chips li { background: var(--sand); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; font-size: 13px; font-weight: 500; }
+
+form, .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; }
+fieldset { border: 0; margin: 0 0 26px; padding: 0; min-width: 0; }
+legend { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); padding: 0; margin-bottom: 12px; }
+#app[lang="ar"] legend { text-transform: none; letter-spacing: 0; font-size: 14px; }
+.field { display: grid; gap: 6px; margin-bottom: 16px; min-width: 0; }
+.field > label, .field > .lbl { font-weight: 600; font-size: 14px; }
+.opt { font-weight: 400; color: var(--muted); font-size: 13px; }
+.hint { color: var(--muted); font-size: 13px; margin: 0; }
+input[type=text], input[type=tel], input[type=email], select, textarea {
+  font: inherit; color: var(--ink); background: var(--field); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; width: 100%; min-width: 0;
+}
+textarea { min-height: 92px; resize: vertical; }
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, .choice input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
+.choices { display: grid; gap: 8px; }
+.choice { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--field); cursor: pointer; }
+.choice input { margin-top: 5px; accent-color: var(--gold-text); flex: none; }
+.choice:has(input:checked) { border-color: var(--gold); background: var(--sand); }
+.err { color: var(--danger); font-size: 13px; margin: 0; min-height: 0; }
+.invalid input[type=text], .invalid input[type=tel], .invalid input[type=email], .invalid select, .invalid textarea, .invalid .choices { border-color: var(--danger); }
+.btn { font: inherit; font-weight: 700; font-size: 15px; background: var(--gold); color: var(--on-gold); border: 0; border-radius: 10px; padding: 13px 22px; cursor: pointer; }
+.btn:hover { filter: brightness(1.06); }
+.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); font-weight: 600; }
+.btn[disabled] { opacity: .6; cursor: progress; }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.note { font-size: 13px; color: var(--muted); }
+
+.done h2 { font-size: 22px; margin: 0 0 6px; }
+.status { display: inline-block; font-size: 13px; font-weight: 600; border-radius: 999px; padding: 3px 12px; margin-bottom: 12px; }
+.status.ok { background: color-mix(in srgb, var(--ok) 16%, transparent); color: var(--ok); }
+.status.todo { background: var(--sand); color: var(--gold-text); border: 1px solid var(--line); }
+.msg { width: 100%; min-height: 220px; font-family: var(--f-latin); font-size: 14px; line-height: 1.6; direction: inherit; }
+#app[lang="ar"] .msg { font-family: var(--f-ar); }
+
+.owner { margin-top: 28px; }
+.owner h2 { font-size: 18px; margin: 0 0 4px; }
+.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; margin: 12px 0; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: start; white-space: nowrap; }
+th { background: var(--sand); font-weight: 600; }
+tr:last-child td { border-bottom: 0; }
+.seats { font-variant-numeric: tabular-nums; font-weight: 700; }
+@media (max-width: 480px) { h1 { font-size: 25px; } form, .card { padding: 18px 14px; } }
+@media (prefers-reduced-motion: no-preference) { .choice, .btn, .lang { transition: border-color .15s, background-color .15s, filter .15s; } }
+.hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+html{color-scheme:light}
+</style></head><body>
+<main id="app" lang="ar" dir="rtl">
+  <div class="top">
+    <span class="eyebrow" data-i18n="eyebrow"></span>
+    <button type="button" class="lang" id="langBtn"></button>
+  </div>
+  <h1 data-i18n="title"></h1>
+  <p class="sub" data-i18n="sub"></p>
+  <ul class="chips" id="chips"></ul>
+
+  <section id="formView">
+    <form id="regForm" novalidate>
+      <fieldset>
+        <legend data-i18n="secAbout"></legend>
+        <div class="field" data-f="name">
+          <label for="name" data-i18n="name"></label>
+          <input type="text" id="name" autocomplete="name" maxlength="80">
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="whatsapp">
+          <label for="whatsapp" data-i18n="whatsapp"></label>
+          <input type="tel" id="whatsapp" inputmode="tel" autocomplete="tel" maxlength="24" dir="ltr" placeholder="+964 7XX XXX XXXX">
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="email">
+          <label for="email"><span data-i18n="email"></span> <span class="opt" data-i18n="optional"></span></label>
+          <input type="email" id="email" autocomplete="email" maxlength="120" dir="ltr">
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="role">
+          <label for="role" data-i18n="role"></label>
+          <select id="role"></select>
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="org">
+          <label for="org"><span data-i18n="org"></span> <span class="opt" data-i18n="optional"></span></label>
+          <input type="text" id="org" maxlength="100">
+        </div>
+        <div class="field" data-f="area">
+          <label for="area" data-i18n="area"></label>
+          <input type="text" id="area" maxlength="100" autocomplete="address-level2">
+          <p class="hint" data-i18n="areaHint"></p>
+          <p class="err" data-err></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="secExp"></legend>
+        <div class="field" data-f="level">
+          <span class="lbl" data-i18n="level"></span>
+          <div class="choices" id="levelChoices" role="radiogroup"></div>
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="tools">
+          <span class="lbl" data-i18n="tools"></span>
+          <div class="choices" id="toolsChoices"></div>
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="why">
+          <label for="why" data-i18n="why"></label>
+          <textarea id="why" maxlength="600"></textarea>
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="problem">
+          <label for="problem"><span data-i18n="problem"></span> <span class="opt" data-i18n="optional"></span></label>
+          <textarea id="problem" maxlength="600"></textarea>
+          <p class="hint" data-i18n="problemHint"></p>
+        </div>
+        <div class="field" data-f="pitch">
+          <span class="lbl" data-i18n="pitch"></span>
+          <div class="choices" id="pitchChoices" role="radiogroup"></div>
+          <p class="err" data-err></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="secWhen"></legend>
+        <div class="field" data-f="days">
+          <span class="lbl" data-i18n="days"></span>
+          <div class="choices" id="daysChoices" role="radiogroup"></div>
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="hours">
+          <span class="lbl" data-i18n="hours"></span>
+          <div class="choices" id="hoursChoices"></div>
+          <p class="hint" data-i18n="hoursHint"></p>
+          <p class="err" data-err></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend data-i18n="secCommit"></legend>
+        <div class="field" data-f="attend">
+          <span class="lbl" data-i18n="attend"></span>
+          <div class="choices" id="attendChoices" role="radiogroup"></div>
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="commit">
+          <span class="lbl" data-i18n="commitLbl"></span>
+          <div class="choices" id="commitChoices"></div>
+          <p class="err" data-err></p>
+        </div>
+        <div class="field" data-f="consent">
+          <div class="choices"><label class="choice"><input type="checkbox" id="consent"><span data-i18n="consent"></span></label></div>
+          <p class="err" data-err></p>
+        </div>
+      </fieldset>
+
+      <div class="hp" aria-hidden="true"><label>Website <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="row">
+        <button type="submit" class="btn" id="submitBtn" data-i18n="submit"></button>
+        <span class="note" id="submitNote"></span>
+      </div>
+    </form>
+  </section>
+
+    <section id="doneView" class="card done" hidden>
+    <span class="status ok" id="doneStatus"></span>
+    <h2 id="doneTitle"></h2>
+    <p class="sub" id="doneText"></p>
+    <div class="row"><button type="button" class="btn ghost" id="editBtn"></button></div>
+  </section>
+</main>
+<script>
+// Supabase project URL and the public anon / publishable key (safe to publish; visitors can only call register())
+var SUPABASE_URL = "https://osbnvoucfyccjlcqkpsh.supabase.co";
+var SUPABASE_KEY = "sb_publishable_opEH-Ks86qDpe6XhXRFWAw_gqSlFg3z";
+var S = {
+  ar: {
+    eyebrow: "AI Learning Circle", title: "استمارة الانضمام",
+    sub: "أجب عن الأسئلة التالية في دقيقتين. نختار الأعضاء الأوائل لتناسب الدائرة، ونتواصل معك عبر واتساب.",
+    chips: ["كل أسبوعين", "150 دقيقة", "10 إلى 15 مقعداً", "بغداد، وجهاً لوجه"],
+    secAbout: "عنك", name: "الاسم الكامل", whatsapp: "رقم واتساب", email: "البريد الإلكتروني", optional: "(اختياري)",
+    role: "مجالك (عمل أو دراسة)", org: "الجهة أو الشركة أو الجامعة",
+    area: "أين تسكن؟", areaHint: "يكفي المنطقة أو الحي. يساعدنا على اختيار مكان مناسب.",
+    tools: "أي أدوات ذكاء اصطناعي تستخدم؟ (اختر كل ما ينطبق)", toolList: ["Claude", "ChatGPT", "Gemini", "أدوات أخرى", "لم أستخدم بعد"],
+    secWhen: "أوقاتك المناسبة", days: "ما الأيام المناسبة لك؟", dayOpts: ["أيام الأسبوع (الأحد إلى الخميس)", "نهاية الأسبوع (الجمعة والسبت)", "كلاهما مناسب"],
+    hours: "ما الساعات المناسبة لك؟ (اختر كل ما يناسبك)", hourOpts: ["صباحاً (9 إلى 12)", "بعد الظهر (12 إلى 4)", "مساءً مبكراً (4 إلى 7)", "مساءً (7 إلى 10)"], hoursHint: "نختار الوقت الذي يناسب أكثر الأعضاء.",
+    secExp: "خبرتك وهدفك", level: "كيف تستخدم الذكاء الاصطناعي اليوم؟",
+    why: "لماذا تريد الانضمام؟", problem: "مشكلة في عملك تريد حلها بالذكاء الاصطناعي", problemHint: "جملة أو جملتان تكفي. نستفيد منها لتحديد موضوعات العروض.",
+    pitch: "هل تريد عرض فكرة أو تجربة في الجلسات الأولى؟",
+    secCommit: "التزامك", attend: "هل تستطيع الحضور وجهاً لوجه في بغداد؟",
+    commitLbl: "أوافق على ما يلي",
+    commit: ["حضور أربع جلسات خلال ثمانية أسابيع، كل أسبوعين جلسة (150 دقيقة).", "إنجاز واجب 60 إلى 90 دقيقة قبل كل جلسة.", "الحفاظ على الثقة: ما يُقال في الدائرة يبقى فيها، ولا أدخل بيانات عملاء أو جهة عملي في أدوات الذكاء الاصطناعي.", "تقييم الجلسة بثلاثة أسئلة سريعة بعد كل جلسة."],
+    consent: "أوافق على استخدام بياناتي لتنظيم الدائرة فقط.",
+    submit: "أرسل طلب الانضمام", sending: "جارٍ الحفظ…",
+    levels: ["جديد على الذكاء الاصطناعي", "أجرّبه أحياناً", "أستخدمه كل أسبوع", "أستخدمه يومياً في عملي"],
+    pitches: ["نعم", "ربما لاحقاً", "لا، أريد التعلّم فقط"],
+    attends: ["نعم، كل أسبوعين", "غالباً نعم", "لست متأكداً"],
+    fields: ["رائد أعمال", "مهندس", "مدير", "باحث", "أكاديمي", "طالب", "القطاع العام", "القطاع الخاص", "غير ذلك"],
+    pick: "اختر",
+    e: { area: "اكتب منطقتك.", tools: "اختر خياراً واحداً على الأقل.", days: "اختر خياراً.", hours: "اختر ساعة واحدة على الأقل.", name: "اكتب اسمك الكامل.", whatsapp: "اكتب رقم واتساب صحيحاً، مثال: +964 7XX XXX XXXX.", email: "البريد غير صحيح.", role: "اختر مجال عملك.", level: "اختر خياراً.", why: "اكتب سبباً مختصراً.", pitch: "اختر خياراً.", attend: "اختر خياراً.", commit: "نحتاج موافقتك على النقاط الأربع.", consent: "الموافقة مطلوبة." },
+    errTop: "راجع الحقول المظللة.",
+    doneTitle: "وصلنا طلبك", msgLbl: "نص طلبك",
+    savedText: "حُفظ طلبك في قائمة المنظّم. سنتواصل معك على واتساب بعد اختيار المجموعة الأولى.",
+    sendText: "لإكمال التسجيل أرسل النص أدناه إلى المنظّم على واتساب. تحتاج حساب Claude ودعوة من المنظّم لحفظ الطلب مباشرة في القائمة.",
+    saved: "تم الحفظ", todo: "بقيت خطوة واحدة", copy: "انسخ النص", copied: "تم النسخ", copyFail: "حدّد النص أعلاه وانسخه يدوياً.", wa: "افتح واتساب", edit: "عدّل إجاباتي",
+    msgHead: "طلب انضمام: AI Learning Circle", labels: { area: "المنطقة", tools: "أدوات الذكاء الاصطناعي", days: "الأيام", hours: "الساعات", name: "الاسم", whatsapp: "واتساب", email: "البريد", role: "المجال", org: "الجهة", level: "الخبرة مع AI", why: "سبب الانضمام", problem: "مشكلة أريد حلها", pitch: "عرض فكرة", attend: "الحضور" }, commitLine: "وافقت على شروط الالتزام الأربعة.",
+    ownerTitle: "الطلبات المسجّلة", seatsOf: "من مقاعد الدائرة", noRegs: "لا توجد طلبات بعد.", csv: "نزّل ملف CSV", csvOk: "تم حفظ الملف.", csvFail: "تعذّر حفظ الملف.",
+    cols: ["الاسم", "واتساب", "المجال", "الخبرة", "المنطقة", "الأدوات", "الأيام", "الساعات", "الحضور", "عرض فكرة", "التاريخ"], langBtn: "English"
+  },
+  en: {
+    eyebrow: "AI Learning Circle", title: "Join the circle",
+    sub: "Answer a few questions in two minutes. We pick the first members so the circle works well, then contact you on WhatsApp.",
+    chips: ["Every two weeks", "150 minutes", "10 to 15 seats", "Baghdad, face to face"],
+    secAbout: "About you", name: "Full name", whatsapp: "WhatsApp number", email: "Email", optional: "(optional)",
+    role: "Your field (work or study)", org: "Organisation, company or university",
+    area: "Where do you live?", areaHint: "Area or neighbourhood is enough. It helps us choose a convenient place.",
+    tools: "Which AI tools do you use? (choose all that apply)", toolList: ["Claude", "ChatGPT", "Gemini", "Other tools", "None yet"],
+    secWhen: "Your availability", days: "Which days suit you?", dayOpts: ["Weekdays (Sunday to Thursday)", "Weekend (Friday and Saturday)", "Either works"],
+    hours: "Which hours suit you? (choose all that work)", hourOpts: ["Morning (9 to 12)", "Afternoon (12 to 4)", "Early evening (4 to 7)", "Evening (7 to 10)"], hoursHint: "We will pick the time that suits most members.",
+    secExp: "Your experience and goal", level: "How do you use AI today?",
+    why: "Why do you want to join?", problem: "A work problem you would like to solve with AI", problemHint: "One or two sentences is enough. It helps us plan the pitches.",
+    pitch: "Would you like to present an idea or experiment in the first sessions?",
+    secCommit: "Your commitment", attend: "Can you attend face to face in Baghdad?",
+    commitLbl: "I agree to",
+    commit: ["Attend four sessions in eight weeks, one every two weeks (150 minutes each).", "Do the homework: 60 to 90 minutes before each session.", "Keep trust: what is said in the circle stays there, and I put no client or employer data into AI tools.", "Rate each session with three quick questions."],
+    consent: "I agree that my details are used only to organise the circle.",
+    submit: "Send my application", sending: "Saving…",
+    levels: ["New to AI", "I try it sometimes", "I use it weekly", "I use it daily at work"],
+    pitches: ["Yes", "Maybe later", "No, I want to learn first"],
+    attends: ["Yes, every two weeks", "Probably", "Not sure"],
+    fields: ["Entrepreneur", "Engineer", "Manager", "Researcher", "Academic", "Student", "Public sector", "Private sector", "Other"],
+    pick: "Choose",
+    e: { area: "Tell us your area.", tools: "Choose at least one.", days: "Choose one.", hours: "Choose at least one hour.", name: "Enter your full name.", whatsapp: "Enter a valid WhatsApp number, for example +964 7XX XXX XXXX.", email: "This email looks wrong.", role: "Choose your field.", level: "Choose one.", why: "Write a short reason.", pitch: "Choose one.", attend: "Choose one.", commit: "We need you to agree to all four points.", consent: "Your agreement is required." },
+    errTop: "Check the highlighted fields.",
+    doneTitle: "We received your application", msgLbl: "Your application text",
+    savedText: "Your application is saved in the organiser's list. We will contact you on WhatsApp once the first group is chosen.",
+    sendText: "To finish, send the text below to the organiser on WhatsApp. Saving straight to the list needs a Claude account and an invitation from the organiser.",
+    saved: "Saved", todo: "One step left", copy: "Copy text", copied: "Copied", copyFail: "Select the text above and copy it by hand.", wa: "Open WhatsApp", edit: "Edit my answers",
+    msgHead: "Application: AI Learning Circle", labels: { area: "Area", tools: "AI tools", days: "Days", hours: "Hours", name: "Name", whatsapp: "WhatsApp", email: "Email", role: "Field", org: "Organisation", level: "AI experience", why: "Why I want to join", problem: "Problem I want to solve", pitch: "Present an idea", attend: "Attendance" }, commitLine: "I agreed to the four commitments.",
+    ownerTitle: "Registered applications", seatsOf: "of the circle's seats", noRegs: "No applications yet.", csv: "Download CSV", csvOk: "File saved.", csvFail: "The file could not be saved.",
+    cols: ["Name", "WhatsApp", "Field", "Experience", "Area", "AI tools", "Days", "Hours", "Attendance", "Pitch", "Date"], langBtn: "العربية"
+  }
+};
+
+var lang = "ar";
+var $ = function (id) { return document.getElementById(id); };
+var app = $("app");
+function t(k) { return S[lang][k]; }
+
+S.ar.okText = "سجّلنا طلبك. سنتواصل معك على واتساب بعد اختيار المجموعة الأولى."; S.en.okText = "We recorded your application. We will contact you on WhatsApp once the first group is chosen.";
+S.ar.okUpdated = "حدّثنا طلبك بالبيانات الجديدة."; S.en.okUpdated = "We updated your application with the new details.";
+S.ar.received = "تم الاستلام"; S.en.received = "Received";
+S.ar.errSend = "تعذّر الإرسال. حاول مرة أخرى بعد قليل."; S.en.errSend = "Could not send. Please try again shortly.";
+S.ar.errMany = "محاولات كثيرة. حاول لاحقاً."; S.en.errMany = "Too many attempts. Please try later.";
+
+function buildChoices(boxId, name, labels, type) {
+  var box = $(boxId); box.innerHTML = "";
+  labels.forEach(function (l, i) {
+    var lab = document.createElement("label"); lab.className = "choice";
+    var inp = document.createElement("input"); inp.type = type; inp.name = name; inp.value = String(i);
+    var sp = document.createElement("span"); sp.setAttribute("data-lbl", name + i);
+    lab.appendChild(inp); lab.appendChild(sp); box.appendChild(lab);
+  });
+}
+function fillLabels() {
+  var map = { level: "levels", pitch: "pitches", attend: "attends", commit: "commit", tools: "toolList", days: "dayOpts", hours: "hourOpts" };
+  Object.keys(map).forEach(function (n) {
+    S[lang][map[n]].forEach(function (txt, i) { var el = document.querySelector('[data-lbl="' + n + i + '"]'); if (el) el.textContent = txt; });
+  });
+}
+function fillRole() {
+  var sel = $("role"), cur = sel.value; sel.innerHTML = "";
+  var o = document.createElement("option"); o.value = ""; o.textContent = t("pick"); sel.appendChild(o);
+  t("fields").forEach(function (f, i) { var op = document.createElement("option"); op.value = String(i); op.textContent = f; sel.appendChild(op); });
+  sel.value = cur;
+}
+function renderDone(updated) {
+  $("formView").hidden = true; $("doneView").hidden = false;
+  $("doneStatus").textContent = t("received");
+  $("doneTitle").textContent = t("doneTitle");
+  $("doneText").textContent = updated ? t("okUpdated") : t("okText");
+  $("editBtn").textContent = t("edit");
+}
+var lastUpdated = false;
+function applyLang() {
+  app.lang = lang; app.dir = lang === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i18n]").forEach(function (el) { var v = t(el.getAttribute("data-i18n")); if (typeof v === "string") el.textContent = v; });
+  $("chips").innerHTML = ""; t("chips").forEach(function (c) { var li = document.createElement("li"); li.textContent = c; $("chips").appendChild(li); });
+  $("langBtn").textContent = t("langBtn");
+  fillLabels(); fillRole();
+  if (!$("doneView").hidden) renderDone(lastUpdated);
+  document.querySelectorAll(".field.invalid").forEach(function (f) { f.classList.remove("invalid"); var e = f.querySelector("[data-err]"); if (e) e.textContent = ""; });
+}
+function checkedIdx(name) { return Array.prototype.map.call(document.querySelectorAll('input[name="' + name + '"]:checked'), function (i) { return Number(i.value); }); }
+function radioVal(name) { var r = document.querySelector('input[name="' + name + '"]:checked'); return r ? Number(r.value) : null; }
+function readForm() {
+  return {
+    name: $("name").value.trim(), whatsapp: $("whatsapp").value.trim(), email: $("email").value.trim(),
+    role: $("role").value === "" ? null : Number($("role").value), org: $("org").value.trim(), area: $("area").value.trim(),
+    tools: checkedIdx("tools"), days: radioVal("days"), hours: checkedIdx("hours"),
+    level: radioVal("level"), why: $("why").value.trim(), problem: $("problem").value.trim(),
+    pitch: radioVal("pitch"), attend: radioVal("attend"),
+    commit: document.querySelectorAll('input[name="commit"]:checked').length === 4, consent: $("consent").checked
+  };
+}
+function validate(r) {
+  var errs = {};
+  if (r.name.length < 2) errs.name = 1;
+  if (r.whatsapp.replace(/\D/g, "").length < 8) errs.whatsapp = 1;
+  if (r.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(r.email)) errs.email = 1;
+  if (r.role == null) errs.role = 1;
+  if (r.area.length < 2) errs.area = 1;
+  if (!r.tools.length) errs.tools = 1;
+  if (r.days == null) errs.days = 1;
+  if (!r.hours.length) errs.hours = 1;
+  if (r.level == null) errs.level = 1;
+  if (r.why.length < 3) errs.why = 1;
+  if (r.pitch == null) errs.pitch = 1;
+  if (r.attend == null) errs.attend = 1;
+  if (!r.commit) errs.commit = 1;
+  if (!r.consent) errs.consent = 1;
+  return errs;
+}
+function showErrors(errs) {
+  document.querySelectorAll(".field[data-f]").forEach(function (f) {
+    var k = f.getAttribute("data-f"), e = f.querySelector("[data-err]");
+    if (errs[k]) { f.classList.add("invalid"); if (e) e.textContent = S[lang].e[k]; } else { f.classList.remove("invalid"); if (e) e.textContent = ""; }
+  });
+  var first = Object.keys(errs)[0];
+  if (first) { var el = document.querySelector('.field[data-f="' + first + '"]'); var focusable = el && el.querySelector("input,select,textarea"); if (focusable) focusable.focus(); }
+}
+$("regForm").addEventListener("submit", function (ev) {
+  ev.preventDefault();
+  var r = readForm(), errs = validate(r);
+  showErrors(errs);
+  $("submitNote").textContent = Object.keys(errs).length ? t("errTop") : "";
+  if (Object.keys(errs).length) return;
+  var btn = $("submitBtn"); btn.disabled = true; btn.textContent = t("sending");
+  var body = Object.assign({}, r, { lang: lang, website: $("website").value });
+  fetch(SUPABASE_URL + "/rest/v1/rpc/register", { method: "POST", headers: { "Content-Type": "application/json", "apikey": SUPABASE_KEY }, body: JSON.stringify({ d: body }) })
+    .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { status: j && j.error === "too_many" ? 429 : (j && j.error === "invalid" ? 400 : (res.ok ? 200 : res.status)), j: j }; }); })
+    .then(function (x) {
+      btn.disabled = false; btn.textContent = t("submit");
+      if (x.j && x.j.ok) { lastUpdated = !!x.j.updated; renderDone(lastUpdated); window.scrollTo(0, 0); }
+      else if (x.status === 429) { $("submitNote").textContent = t("errMany"); }
+      else if (x.status === 400 && x.j && x.j.fields) { $("submitNote").textContent = t("errTop"); }
+      else { $("submitNote").textContent = t("errSend"); }
+    })
+    .catch(function () { btn.disabled = false; btn.textContent = t("submit"); $("submitNote").textContent = t("errSend"); });
+});
+$("editBtn").addEventListener("click", function () { $("doneView").hidden = true; $("formView").hidden = false; window.scrollTo(0, 0); });
+$("langBtn").addEventListener("click", function () { lang = lang === "ar" ? "en" : "ar"; applyLang(); });
+
+buildChoices("levelChoices", "level", S.ar.levels, "radio");
+buildChoices("pitchChoices", "pitch", S.ar.pitches, "radio");
+buildChoices("attendChoices", "attend", S.ar.attends, "radio");
+buildChoices("commitChoices", "commit", S.ar.commit, "checkbox");
+buildChoices("toolsChoices", "tools", S.ar.toolList, "checkbox");
+buildChoices("daysChoices", "days", S.ar.dayOpts, "radio");
+buildChoices("hoursChoices", "hours", S.ar.hourOpts, "checkbox");
+applyLang();
+</script></body></html>

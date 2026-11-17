@@ -1,412 +1,702 @@
 <!doctype html>
-<html lang="ar"><head><meta charset="utf-8">
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>AI Learning Circle Registration</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>AI Learning Circle | لا تتعلّم الذكاء الاصطناعي وحدك</title>
+<meta name="description" content="انضم إلى دائرة صغيرة من 10 إلى 15 مهنياً وأكاديمياً وطالباً في بغداد يبنون مهارات الذكاء الاصطناعي والمهارات الناعمة معاً بالتطبيق. المقاعد محدودة.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://faisalalyaseein.github.io/ai-learning-circle/">
+<meta property="og:title" content="AI Learning Circle | لا تتعلّم الذكاء الاصطناعي وحدك">
+<meta property="og:description" content="انضم إلى دائرة صغيرة من 10 إلى 15 مهنياً وأكاديمياً وطالباً في بغداد يبنون مهارات الذكاء الاصطناعي والمهارات الناعمة معاً بالتطبيق. المقاعد محدودة.">
+<meta property="og:image" content="https://faisalalyaseein.github.io/ai-learning-circle/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: one calm column, a sheet with three short sections, a result card after sending, and an organiser table at the foot. */
-:root {
-  --bg: #F8F6EC;
-  --surface: #FFFFFF;
-  --sand: #F0EBE0;
-  --ink: #111111;
-  --muted: #5C584B;
-  --line: #CCC5AA;
-  --gold: #D2B356;
-  --gold-text: #7A5F12;
-  --blue: #2F7DB0;
-  --danger: #B3261E;
-  --ok: #1F6B45;
-  --field: #FFFFFF;
-  --on-gold: #111111;
-  --f-latin: 'Poppins', 'Segoe UI', system-ui, sans-serif;
-  --f-ar: 'Noto Kufi Arabic', 'Segoe UI', Tahoma, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #14130F; --surface: #1E1C17; --sand: #2A2720; --ink: #F4F1E6; --muted: #B8B29E; --line: #4A4637;
-    --gold: #D2B356; --gold-text: #E2C673; --blue: #6DB4E0; --danger: #FF8A80; --ok: #6FD3A0; --field: #17160F; --on-gold: #111111;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #14130F; --surface: #1E1C17; --sand: #2A2720; --ink: #F4F1E6; --muted: #B8B29E; --line: #4A4637;
-  --gold: #D2B356; --gold-text: #E2C673; --blue: #6DB4E0; --danger: #FF8A80; --ok: #6FD3A0; --field: #17160F; --on-gold: #111111;
-  color-scheme: dark;
-}
-* { box-sizing: border-box; }
-body { background: var(--bg); color: var(--ink); font-family: var(--f-latin); font-size: 15px; line-height: 1.6; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 20px 48px; }
-#app { max-width: 680px; margin: 0 auto; }
-#app[lang="ar"] { font-family: var(--f-ar); line-height: 1.85; }
-#app[lang="ar"] h1, #app[lang="ar"] h2, #app[lang="ar"] .eyebrow, #app[lang="ar"] button { letter-spacing: 0; }
-
-.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
-.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
-#app[lang="ar"] .eyebrow { text-transform: none; }
-.lang { font: inherit; font-size: 13px; font-weight: 600; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
-.lang:hover { border-color: var(--gold); }
-h1 { font-size: 30px; line-height: 1.2; margin: 6px 0 8px; font-weight: 700; text-wrap: balance; }
-.sub { color: var(--muted); margin: 0 0 14px; max-width: 60ch; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; padding: 0; list-style: none; }
-.chips li { background: var(--sand); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; font-size: 13px; font-weight: 500; }
-
-form, .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; }
-fieldset { border: 0; margin: 0 0 26px; padding: 0; min-width: 0; }
-legend { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); padding: 0; margin-bottom: 12px; }
-#app[lang="ar"] legend { text-transform: none; letter-spacing: 0; font-size: 14px; }
-.field { display: grid; gap: 6px; margin-bottom: 16px; min-width: 0; }
-.field > label, .field > .lbl { font-weight: 600; font-size: 14px; }
-.opt { font-weight: 400; color: var(--muted); font-size: 13px; }
-.hint { color: var(--muted); font-size: 13px; margin: 0; }
-input[type=text], input[type=tel], input[type=email], select, textarea {
-  font: inherit; color: var(--ink); background: var(--field); border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; width: 100%; min-width: 0;
-}
-textarea { min-height: 92px; resize: vertical; }
-input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, .choice input:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px; }
-.choices { display: grid; gap: 8px; }
-.choice { display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--field); cursor: pointer; }
-.choice input { margin-top: 5px; accent-color: var(--gold-text); flex: none; }
-.choice:has(input:checked) { border-color: var(--gold); background: var(--sand); }
-.err { color: var(--danger); font-size: 13px; margin: 0; min-height: 0; }
-.invalid input[type=text], .invalid input[type=tel], .invalid input[type=email], .invalid select, .invalid textarea, .invalid .choices { border-color: var(--danger); }
-.btn { font: inherit; font-weight: 700; font-size: 15px; background: var(--gold); color: var(--on-gold); border: 0; border-radius: 10px; padding: 13px 22px; cursor: pointer; }
-.btn:hover { filter: brightness(1.06); }
-.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); font-weight: 600; }
-.btn[disabled] { opacity: .6; cursor: progress; }
-.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-.note { font-size: 13px; color: var(--muted); }
-
-.done h2 { font-size: 22px; margin: 0 0 6px; }
-.status { display: inline-block; font-size: 13px; font-weight: 600; border-radius: 999px; padding: 3px 12px; margin-bottom: 12px; }
-.status.ok { background: color-mix(in srgb, var(--ok) 16%, transparent); color: var(--ok); }
-.status.todo { background: var(--sand); color: var(--gold-text); border: 1px solid var(--line); }
-.msg { width: 100%; min-height: 220px; font-family: var(--f-latin); font-size: 14px; line-height: 1.6; direction: inherit; }
-#app[lang="ar"] .msg { font-family: var(--f-ar); }
-
-.owner { margin-top: 28px; }
-.owner h2 { font-size: 18px; margin: 0 0 4px; }
-.tablewrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; margin: 12px 0; }
-table { border-collapse: collapse; width: 100%; font-size: 13px; }
-th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: start; white-space: nowrap; }
-th { background: var(--sand); font-weight: 600; }
-tr:last-child td { border-bottom: 0; }
-.seats { font-variant-numeric: tabular-nums; font-weight: 700; }
-@media (max-width: 480px) { h1 { font-size: 25px; } form, .card { padding: 18px 14px; } }
-@media (prefers-reduced-motion: no-preference) { .choice, .btn, .lang { transition: border-color .15s, background-color .15s, filter .15s; } }
-.hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-html{color-scheme:light}
+:root{--bg:#F8F6EC;--bg2:#F0EBE0;--card:#FFFFFF;--ink:#111111;--mute:#5C584B;--line:#CCC5AA;--gold:#D2B356;--dgold:#7A5F10;--blue:#56A1D2;--dark:#111111;--dink:#F8F6EC;--btnink:#111111}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15140F;--bg2:#1C1A13;--card:#211F17;--ink:#F3F0E4;--mute:#B7B19B;--line:#3A3626;--dgold:#D2B356;--dark:#0B0B09;--dink:#F8F6EC}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:16px/1.65 "Poppins","Noto Kufi Arabic",system-ui,sans-serif;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+html[lang="ar"] body{font-family:"Noto Kufi Arabic","Poppins",system-ui,sans-serif;line-height:1.85}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+section{padding:56px 0}.alt{background:var(--bg2)}.dark{background:var(--dark);color:var(--dink)}
+.L{display:none}html[lang="en"] .L[data-l="en"],html[lang="ar"] .L[data-l="ar"]{display:block}
+.bar{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.bar .wrap{display:flex;align-items:center;gap:12px;height:54px}
+.logo{font-weight:700;letter-spacing:.2px}.logo i{font-style:normal;color:var(--dgold)}
+.sp{flex:1}
+.lang{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:20px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer}
+.btn{display:inline-block;background:var(--gold);color:var(--btnink);font-weight:700;text-decoration:none;border-radius:12px;padding:13px 26px;border:2px solid var(--gold)}
+.btn.ghost{background:transparent;color:inherit;border-color:var(--line)}.btn.sm{padding:8px 16px;font-size:14px;border-radius:10px}
+.dark .btn.ghost{border-color:#5b5440}
+.hero{padding:64px 0 56px;background:var(--dark);color:var(--dink)}
+.eye{font-size:12px;font-weight:600;letter-spacing:1.4px;color:var(--gold);margin-bottom:14px}
+html[lang="ar"] .eye{letter-spacing:0;font-size:14px}
+h1{font-size:clamp(30px,6vw,52px);line-height:1.15;font-weight:700;margin-bottom:16px}
+h1 .brand{display:block;color:var(--gold);font-size:.62em;margin-bottom:8px}
+.lead{max-width:62ch;font-size:18px;color:#e6e1d0;margin-bottom:14px}
+.dark .lead{color:#e6e1d0}
+.steps{color:var(--gold);font-weight:600;font-size:14px;margin-bottom:20px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid #5b5440;border-radius:30px;padding:6px 14px;font-size:14px}
+.badge .ic{color:var(--gold)}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 30px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.stat{border:1px solid #3d3826;border-radius:14px;padding:14px 16px;background:#1a1914}
+.stat b{display:block;font-size:22px;color:var(--gold);line-height:1.3}.stat span{font-size:13px;color:#cfc9b6}
+h2{font-size:clamp(24px,4vw,34px);line-height:1.25;margin-bottom:22px}
+.h3{font-size:14px;font-weight:700;color:var(--dgold);margin:34px 0 14px;text-transform:uppercase;letter-spacing:.8px}
+html[lang="ar"] .h3{text-transform:none;letter-spacing:0;font-size:17px}
+.dark .h3{color:var(--gold)}
+.bul{list-style:none;display:grid;gap:12px;margin-bottom:22px}
+.bul li{display:flex;gap:12px;align-items:flex-start}
+.bul .ic,.ic{width:1.2em;height:1.2em;flex:none}.bul .ic{color:var(--dgold);margin-top:5px;width:22px;height:22px}
+.ic svg{width:100%;height:100%}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:var(--bg2);border:1px solid var(--line);border-radius:30px;padding:5px 14px;font-size:14px}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.card .ic{width:28px;height:28px;color:var(--dgold);margin-bottom:10px;display:block}
+.card h3{font-size:17px;margin-bottom:6px;line-height:1.4}.card p{color:var(--mute);font-size:15px}
+.when{font-weight:600;color:var(--dgold);font-size:14px;margin-bottom:6px}
+.sbar{display:flex;height:44px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.seg{display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;min-width:0}
+.s{background:var(--line);color:var(--ink)}.g{background:var(--gold);color:#111}.b{background:var(--blue);color:#111}.k{background:#111;color:var(--gold)}
+.seg{border-inline-end:2px solid var(--bg)}.seg:last-child{border:0}
+.slist{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px 16px;margin-top:14px;font-size:14px}
+.slist li{display:flex;gap:8px;align-items:flex-start}.sw{width:12px;height:12px;border-radius:50%;flex:none;margin-top:7px}
+.slist small{color:var(--mute)}
+.wk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:2px}
+.wk small{color:var(--dgold);font-weight:700}.wk b{font-size:16px}.wk span{color:var(--mute);font-size:14px}
+.out{margin-top:22px;padding:18px 20px;border-radius:14px;background:var(--dark);color:var(--dink);border-inline-start:5px solid var(--gold)}
+.asks{list-style:none;display:grid;gap:14px;margin-bottom:6px}
+.asks li{display:flex;gap:14px;align-items:flex-start}
+.asks .n{width:34px;height:34px;border-radius:50%;background:var(--dark);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.asks b{display:block}.asks span{color:var(--mute)}
+.joinbox{display:grid;gap:12px;margin-bottom:22px;max-width:560px}
+.jr{display:flex;align-items:center;gap:12px;border-bottom:1px solid #3d3826;padding-bottom:10px}
+.jr .ic{color:var(--gold);width:22px;height:22px}.jr b{min-width:110px}
+.soon{color:var(--gold);border:1px dashed #8a7a3a;border-radius:8px;padding:2px 10px;font-size:14px}
+.share{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px}
+.share>span{color:#cfc9b6;font-size:14px}
+.chipbtn{display:inline-flex;align-items:center;gap:8px;border:1px solid #5b5440;background:transparent;color:var(--dink);border-radius:30px;padding:7px 14px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none}
+.chipbtn .ic{width:16px;height:16px;color:var(--gold)}
+.note{margin-top:26px;font-size:13px;color:#b9b39f;max-width:70ch}
+footer{background:var(--dark);color:#b9b39f;font-size:13px;padding:0 0 28px}footer .wrap{border-top:1px solid #3d3826;padding-top:18px}
+.fab{position:fixed;inset-inline:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;display:none}
+.fab .btn{display:block;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+@media (max-width:640px){.fab{display:block}section{padding:44px 0}.hero{padding:44px 0}body{padding-bottom:84px}.bar .btn.sm{display:none}}
+a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.toast{position:fixed;inset-inline-start:50%;transform:translateX(-50%);bottom:90px;background:#111;color:var(--gold);padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:40}
+.toast.on{opacity:1}
 </style></head><body>
-<main id="app" lang="ar" dir="rtl">
-  <div class="top">
-    <span class="eyebrow" data-i18n="eyebrow"></span>
-    <button type="button" class="lang" id="langBtn"></button>
-  </div>
-  <h1 data-i18n="title"></h1>
-  <p class="sub" data-i18n="sub"></p>
-  <ul class="chips" id="chips"></ul>
-
-  <section id="formView">
-    <form id="regForm" novalidate>
-      <fieldset>
-        <legend data-i18n="secAbout"></legend>
-        <div class="field" data-f="name">
-          <label for="name" data-i18n="name"></label>
-          <input type="text" id="name" autocomplete="name" maxlength="80">
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="whatsapp">
-          <label for="whatsapp" data-i18n="whatsapp"></label>
-          <input type="tel" id="whatsapp" inputmode="tel" autocomplete="tel" maxlength="24" dir="ltr" placeholder="+964 7XX XXX XXXX">
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="email">
-          <label for="email"><span data-i18n="email"></span> <span class="opt" data-i18n="optional"></span></label>
-          <input type="email" id="email" autocomplete="email" maxlength="120" dir="ltr">
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="role">
-          <label for="role" data-i18n="role"></label>
-          <select id="role"></select>
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="org">
-          <label for="org"><span data-i18n="org"></span> <span class="opt" data-i18n="optional"></span></label>
-          <input type="text" id="org" maxlength="100">
-        </div>
-        <div class="field" data-f="area">
-          <label for="area" data-i18n="area"></label>
-          <input type="text" id="area" maxlength="100" autocomplete="address-level2">
-          <p class="hint" data-i18n="areaHint"></p>
-          <p class="err" data-err></p>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend data-i18n="secExp"></legend>
-        <div class="field" data-f="level">
-          <span class="lbl" data-i18n="level"></span>
-          <div class="choices" id="levelChoices" role="radiogroup"></div>
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="tools">
-          <span class="lbl" data-i18n="tools"></span>
-          <div class="choices" id="toolsChoices"></div>
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="why">
-          <label for="why" data-i18n="why"></label>
-          <textarea id="why" maxlength="600"></textarea>
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="problem">
-          <label for="problem"><span data-i18n="problem"></span> <span class="opt" data-i18n="optional"></span></label>
-          <textarea id="problem" maxlength="600"></textarea>
-          <p class="hint" data-i18n="problemHint"></p>
-        </div>
-        <div class="field" data-f="pitch">
-          <span class="lbl" data-i18n="pitch"></span>
-          <div class="choices" id="pitchChoices" role="radiogroup"></div>
-          <p class="err" data-err></p>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend data-i18n="secWhen"></legend>
-        <div class="field" data-f="days">
-          <span class="lbl" data-i18n="days"></span>
-          <div class="choices" id="daysChoices" role="radiogroup"></div>
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="hours">
-          <span class="lbl" data-i18n="hours"></span>
-          <div class="choices" id="hoursChoices"></div>
-          <p class="hint" data-i18n="hoursHint"></p>
-          <p class="err" data-err></p>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend data-i18n="secCommit"></legend>
-        <div class="field" data-f="attend">
-          <span class="lbl" data-i18n="attend"></span>
-          <div class="choices" id="attendChoices" role="radiogroup"></div>
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="commit">
-          <span class="lbl" data-i18n="commitLbl"></span>
-          <div class="choices" id="commitChoices"></div>
-          <p class="err" data-err></p>
-        </div>
-        <div class="field" data-f="consent">
-          <div class="choices"><label class="choice"><input type="checkbox" id="consent"><span data-i18n="consent"></span></label></div>
-          <p class="err" data-err></p>
-        </div>
-      </fieldset>
-
-      <div class="hp" aria-hidden="true"><label>Website <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></label></div>
-      <div class="row">
-        <button type="submit" class="btn" id="submitBtn" data-i18n="submit"></button>
-        <span class="note" id="submitNote"></span>
-      </div>
-    </form>
-  </section>
-
-    <section id="doneView" class="card done" hidden>
-    <span class="status ok" id="doneStatus"></span>
-    <h2 id="doneTitle"></h2>
-    <p class="sub" id="doneText"></p>
-    <div class="row"><button type="button" class="btn ghost" id="editBtn"></button></div>
-  </section>
-</main>
+<header class="bar"><div class="wrap"><span class="logo">AI Learning <i>Circle</i></span><span class="sp"></span>
+<button class="lang" id="langBtn" type="button">English</button><a class="btn sm" id="barBtn" href="register/">سجّل الآن</a></div></header>
+<main><div class="L" data-l="ar">
+<section class="hero"><div class="wrap">
+<p class="eye">دعوة للمهنيين والأكاديميين والطلبة</p><h1><span class="brand">AI Learning Circle</span>لا تتعلّم الذكاء الاصطناعي وحدك</h1>
+<p class="lead">انضم إلى دائرة صغيرة من 10 إلى 15 مهنياً وأكاديمياً وطالباً يبنون مهارات الذكاء الاصطناعي والمهارات الناعمة معاً، بالتطبيق والعرض (Pitching) والملاحظات الصريحة.</p><p class="steps">تعلّم  ·  تأمّل  ·  ناقش  ·  طبّق  ·  شارك  ·  تطوّر</p>
+<div class="badges"><span class="badge"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg></span>مقاعد محدودة</span><span class="badge"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg></span>بغداد، وجهاً لوجه</span><span class="badge"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+  <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+</svg></span>نبدأ قريباً</span></div>
+<div class="cta"><a class="btn" href="register/">سجّل الآن</a><a class="btn ghost" href="#how-ar">شاهد كيف تعمل</a></div>
+<div class="stats"><div class="stat"><b>10 إلى 15</b><span>عضواً</span></div><div class="stat"><b>150 دقيقة</b><span>كل أسبوعين</span></div><div class="stat"><b>8 أسابيع</b><span>المرحلة الأولى</span></div><div class="stat"><b>بغداد</b><span>وجهاً لوجه</span></div></div></div></section>
+<section id="for-ar"><div class="wrap"><h2>هل هذه الدائرة لك؟</h2><ul class="bul"><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><span>تريد أن تستخدم أدوات الذكاء الاصطناعي بشكل جيد في عملك، لا أن تقرأ عنها فقط.</span></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><span>تريد المهارات المحيطة بالذكاء الاصطناعي أيضاً: عرض الأفكار، التواصل بوضوح، التفكير النقدي، والقيادة.</span></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><span>تتعلم أفضل بالتطبيق، وتحب ملاحظات صريحة من ناس في مجالات أخرى.</span></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><span>لست مبرمجاً؟ لا مشكلة. هذه الدائرة لك أيضاً.</span></li></ul><div class="chips"><span class="chip">رواد أعمال</span><span class="chip">مهندسون</span><span class="chip">مديرون</span><span class="chip">باحثون</span><span class="chip">أكاديميون</span><span class="chip">طلبة</span><span class="chip">القطاع العام</span><span class="chip">القطاع الخاص</span></div>
+<h3 class="h3">ماذا ستكسب</h3><div class="grid g2"><div class="card"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+  <path d="M22 10v6" />
+  <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+</svg></span><h3>مهارات الذكاء الاصطناعي</h3><p>نتابع مسارات تعلّم قائمة من عدة جهات ونستهدف شهادات إتمام Anthropic Academy، مع مجموعة تساعدك على الاستمرار.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z" />
+  <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
+</svg></span><h3>مهارات ناعمة</h3><p>العرض (Pitching) والتواصل والتفكير النقدي والتكيّف والقيادة، نتدرب عليها في كل جلسة.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2 3h20" />
+  <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
+  <path d="m7 21 5-5 5 5" />
+</svg></span><h3>التعلّم بالممارسة</h3><p>طبّق ما تعلمته، واعرضه، واحصل على ملاحظات صريحة من المجموعة.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+  <path d="m21 3 1 11h-2" />
+  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+  <path d="M3 4h8" />
+</svg></span><h3>شبكة علاقات حقيقية</h3><p>تلتقي مهندسين ومديرين ورواد أعمال وأكاديميين وطلبة من قطاعات مختلفة.</p></div></div></div></section>
+<section id="how-ar" class="alt"><div class="wrap"><h2>كيف تعمل الدائرة؟</h2><div class="grid g3"><div class="card ph"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 7v14" />
+  <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+</svg></span><h3>قبل الجلسة: في بيتك</h3><div class="when">60 إلى 90 دقيقة</div><p>ادرس من مسار التعلّم الذي اخترته واقرأ مقالاً قصيراً واحداً.</p></div><div class="card ph"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg></span><h3>في الجلسة: معاً</h3><div class="when">150 دقيقة كل أسبوعين</div><p>اختبار سريع، عروض وتجارب، استراحة قهوة، ورشة مهارات ناعمة، وأخبار الذكاء الاصطناعي.</p></div><div class="card ph"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+  <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+</svg></span><h3>بعد الجلسة: في الواقع</h3><div class="when">إجراء واحد</div><p>جرّب شيئاً واحداً في عملك وعد لتخبر المجموعة.</p></div></div>
+<h3 class="h3">داخل الجلسة (150 دقيقة)</h3><div class="sbar"><div class="seg s" style="flex:10" title="استقبال ومراجعة (10)"><span>10</span></div><div class="seg g" style="flex:15" title="اختبار سريع (15)"><span>15</span></div><div class="seg g" style="flex:10" title="نقاش (10)"><span>10</span></div><div class="seg b" style="flex:25" title="عروض وتجارب (25)"><span>25</span></div><div class="seg s" style="flex:15" title="استراحة قهوة (15)"><span>15</span></div><div class="seg k" style="flex:50" title="ورشة مهارات ناعمة (50)"><span>50</span></div><div class="seg s" style="flex:5" title="أخبار الذكاء الاصطناعي (5)"><span>5</span></div><div class="seg s" style="flex:15" title="نقاش مفتوح وخطوات قادمة (15)"><span>15</span></div></div><ul class="slist"><li><i class="sw s"></i><span>استقبال ومراجعة <small>10</small></span></li><li><i class="sw g"></i><span>اختبار سريع <small>15</small></span></li><li><i class="sw g"></i><span>نقاش <small>10</small></span></li><li><i class="sw b"></i><span>عروض وتجارب <small>25</small></span></li><li><i class="sw s"></i><span>استراحة قهوة <small>15</small></span></li><li><i class="sw k"></i><span>ورشة مهارات ناعمة <small>50</small></span></li><li><i class="sw s"></i><span>أخبار الذكاء الاصطناعي <small>5</small></span></li><li><i class="sw s"></i><span>نقاش مفتوح وخطوات قادمة <small>15</small></span></li></ul>
+<h3 class="h3">أول 8 أسابيع</h3><div class="grid g4"><div class="wk"><small>الأسبوع 2</small><b>الجلسة 1</b><span>التكيّف وعقلية النمو</span></div><div class="wk"><small>الأسبوع 4</small><b>الجلسة 2</b><span>حل المشكلات بشكل منظم</span></div><div class="wk"><small>الأسبوع 6</small><b>الجلسة 3</b><span>التواصل والعرض (Pitching)</span></div><div class="wk"><small>الأسبوع 8</small><b>الجلسة 4</b><span>القيادة ومستقبل العمل</span></div></div><p class="out">بنهاية الأسبوع 8: شهادات Anthropic Academy (هدفنا)، عرض (Pitch) قدّمته، تجربة ذكاء اصطناعي حقيقية طبّقتها، وشبكة علاقات تبقى.</p></div></section>
+<section><div class="wrap"><h2>ماذا نطلب منك؟</h2><ol class="asks"><li><span class="n">1</span><div><b>احضر</b><span>أربع جلسات خلال ثمانية أسابيع، كل أسبوعين جلسة.</span></div></li><li><span class="n">2</span><div><b>أنجز الواجب</b><span>60 إلى 90 دقيقة قبل كل جلسة.</span></div></li><li><span class="n">3</span><div><b>شارك</b><span>اسأل وناقش وقدّم عندما يحين دورك.</span></div></li><li><span class="n">4</span><div><b>حافظ على الثقة</b><span>ما يُقال في الدائرة يبقى فيها. لا بيانات عملاء أو جهة عملك في أدوات الذكاء الاصطناعي.</span></div></li><li><span class="n">5</span><div><b>قيّم</b><span>ثلاثة أسئلة سريعة بعد كل جلسة.</span></div></li></ol>
+<h3 class="h3">معلومات مفيدة</h3><div class="grid g3"><div class="card"><h3>هل أحتاج برمجة؟</h3><p>لا. لكل موضوع تقني مسار بلا برمجة.</p></div><div class="card"><h3>بماذا نتعلّم؟</h3><p>بمسارات تعلّم قائمة من عدة جهات، مع ورش تطبيق وملاحظات من الأقران.</p></div><div class="card"><h3>ماذا أحتاج؟</h3><p>حاسوب أو هاتف وفضول. نساعدك في الإعداد.</p></div></div></div></section>
+<section id="join-ar" class="dark"><div class="wrap"><h2>انضم إلى الدائرة الأولى</h2><div class="joinbox"><div class="jr"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="M8 14h.01" />
+  <path d="M12 14h.01" />
+  <path d="M16 14h.01" />
+  <path d="M8 18h.01" />
+  <path d="M12 18h.01" />
+  <path d="M16 18h.01" />
+</svg></span><b>أول جلسة</b><span class="soon">يُعلن قريباً</span></div><div class="jr"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg></span><b>المكان</b><span class="soon">يُعلن قريباً</span></div><div class="jr"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg></span><b>المقاعد</b><span>10 إلى 15 عضواً</span></div></div>
+<p class="lead">المقاعد محدودة. سجّل اهتمامك وسنتواصل معك على واتساب.</p>
+<div class="cta"><a class="btn" href="register/">سجّل الآن</a></div>
+<div class="share"><span>شارك</span><button type="button" class="chipbtn" data-copy="تم نسخ الرابط"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="18" cy="5" r="3" />
+  <circle cx="6" cy="12" r="3" />
+  <circle cx="18" cy="19" r="3" />
+  <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
+  <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
+</svg></span>انسخ الرابط</button>
+<a class="chipbtn" target="_blank" rel="noopener" data-wa="أرسل على واتساب" href="#">أرسل على واتساب</a></div>
+<p class="note">محتوى الكورسات وشهاداتها تخص الجهات التي تصدرها (مثل Anthropic Academy). والدائرة تضيف التطبيق والملاحظات والمجتمع.</p></div></section>
+<footer><div class="wrap">AI Learning Circle، بغداد</div></footer></div><div class="L" data-l="en">
+<section class="hero"><div class="wrap">
+<p class="eye">AN INVITATION TO PROFESSIONALS, ACADEMICS AND STUDENTS</p><h1><span class="brand">AI Learning Circle</span>Don't learn AI alone.</h1>
+<p class="lead">Join a small circle of 10 to 15 professionals, academics and students who build AI skills and soft skills together, through practice, pitching and honest feedback.</p><p class="steps">Learn  ·  Reflect  ·  Discuss  ·  Apply  ·  Share  ·  Grow</p>
+<div class="badges"><span class="badge"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg></span>Limited seats</span><span class="badge"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg></span>Baghdad, face to face</span><span class="badge"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+  <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+</svg></span>Starting soon</span></div>
+<div class="cta"><a class="btn" href="register/">Register now</a><a class="btn ghost" href="#how-en">See how it works</a></div>
+<div class="stats"><div class="stat"><b>10 to 15</b><span>members</span></div><div class="stat"><b>150 min</b><span>every two weeks</span></div><div class="stat"><b>8 weeks</b><span>first phase</span></div><div class="stat"><b>Baghdad</b><span>face to face</span></div></div></div></section>
+<section id="for-en"><div class="wrap"><h2>Is this circle for you?</h2><ul class="bul"><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><span>You want to use today's AI tools well in your work, not only read about them.</span></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><span>You want the skills around AI too: pitching ideas, communicating clearly, thinking critically, leading.</span></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><span>You learn best by doing, and you like honest feedback from people in other fields.</span></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><span>Not a programmer? That is fine. This circle is for you too.</span></li></ul><div class="chips"><span class="chip">Entrepreneurs</span><span class="chip">Engineers</span><span class="chip">Managers</span><span class="chip">Researchers</span><span class="chip">Academics</span><span class="chip">Students</span><span class="chip">Public sector</span><span class="chip">Private sector</span></div>
+<h3 class="h3">What you gain</h3><div class="grid g2"><div class="card"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+  <path d="M22 10v6" />
+  <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+</svg></span><h3>Practical AI skills</h3><p>Follow existing learning paths from several providers and aim for Anthropic Academy certificates of completion, with a group that keeps you on track.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z" />
+  <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
+</svg></span><h3>Soft skills</h3><p>Pitching, communication, critical thinking, adaptability and leadership, practised in every session.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2 3h20" />
+  <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
+  <path d="m7 21 5-5 5 5" />
+</svg></span><h3>Learning by practice</h3><p>Apply what you learned, present it, and get honest feedback from the group.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+  <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+  <path d="m21 3 1 11h-2" />
+  <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+  <path d="M3 4h8" />
+</svg></span><h3>A real network</h3><p>Meet engineers, managers, founders, academics and students from different sectors.</p></div></div></div></section>
+<section id="how-en" class="alt"><div class="wrap"><h2>How the circle works</h2><div class="grid g3"><div class="card ph"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 7v14" />
+  <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+</svg></span><h3>Before: at home</h3><div class="when">60 to 90 minutes</div><p>Study from your learning path and read one short article.</p></div><div class="card ph"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg></span><h3>During: together</h3><div class="when">150 minutes, every two weeks</div><p>A quick quiz, pitches and demos, a coffee break, a soft skills workshop, and AI news.</p></div><div class="card ph"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+  <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+</svg></span><h3>After: in real life</h3><div class="when">One action</div><p>Try one thing at work and report back to the group.</p></div></div>
+<h3 class="h3">Inside a session (150 minutes)</h3><div class="sbar"><div class="seg s" style="flex:10" title="Check-in (10)"><span>10</span></div><div class="seg g" style="flex:15" title="Quick quiz (15)"><span>15</span></div><div class="seg g" style="flex:10" title="Discussion (10)"><span>10</span></div><div class="seg b" style="flex:25" title="Pitches and demos (25)"><span>25</span></div><div class="seg s" style="flex:15" title="Coffee break (15)"><span>15</span></div><div class="seg k" style="flex:50" title="Soft skills workshop (50)"><span>50</span></div><div class="seg s" style="flex:5" title="AI news (5)"><span>5</span></div><div class="seg s" style="flex:15" title="Open talk, next steps (15)"><span>15</span></div></div><ul class="slist"><li><i class="sw s"></i><span>Check-in <small>10</small></span></li><li><i class="sw g"></i><span>Quick quiz <small>15</small></span></li><li><i class="sw g"></i><span>Discussion <small>10</small></span></li><li><i class="sw b"></i><span>Pitches and demos <small>25</small></span></li><li><i class="sw s"></i><span>Coffee break <small>15</small></span></li><li><i class="sw k"></i><span>Soft skills workshop <small>50</small></span></li><li><i class="sw s"></i><span>AI news <small>5</small></span></li><li><i class="sw s"></i><span>Open talk, next steps <small>15</small></span></li></ul>
+<h3 class="h3">Your first 8 weeks</h3><div class="grid g4"><div class="wk"><small>Week 2</small><b>Session 1</b><span>Adaptability and growth mindset</span></div><div class="wk"><small>Week 4</small><b>Session 2</b><span>Structured problem-solving</span></div><div class="wk"><small>Week 6</small><b>Session 3</b><span>Communication and pitching</span></div><div class="wk"><small>Week 8</small><b>Session 4</b><span>Leadership and future of work</span></div></div><p class="out">By week 8: Anthropic Academy certificates (our target), a pitch you delivered, a real AI use case you tried, and a network that lasts.</p></div></section>
+<section><div class="wrap"><h2>What we ask of you</h2><ol class="asks"><li><span class="n">1</span><div><b>Show up</b><span>Four sessions in eight weeks, one every two weeks.</span></div></li><li><span class="n">2</span><div><b>Do the homework</b><span>60 to 90 minutes before each session.</span></div></li><li><span class="n">3</span><div><b>Take part</b><span>Ask, discuss, and present when your turn comes.</span></div></li><li><span class="n">4</span><div><b>Keep trust</b><span>What is said in the circle stays there. No client or employer data in AI tools.</span></div></li><li><span class="n">5</span><div><b>Give feedback</b><span>Three quick questions after every session.</span></div></li></ol>
+<h3 class="h3">Good to know</h3><div class="grid g3"><div class="card"><h3>Do I need to code?</h3><p>No. Every technical topic has a no-code path.</p></div><div class="card"><h3>What do we learn from?</h3><p>Existing learning paths from several providers, plus practice workshops and peer feedback.</p></div><div class="card"><h3>What do I need?</h3><p>A laptop or phone, and curiosity. We help you set up.</p></div></div></div></section>
+<section id="join-en" class="dark"><div class="wrap"><h2>Join the first circle</h2><div class="joinbox"><div class="jr"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="M8 14h.01" />
+  <path d="M12 14h.01" />
+  <path d="M16 14h.01" />
+  <path d="M8 18h.01" />
+  <path d="M12 18h.01" />
+  <path d="M16 18h.01" />
+</svg></span><b>First session</b><span class="soon">To be announced soon</span></div><div class="jr"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+  <circle cx="12" cy="10" r="3" />
+</svg></span><b>Place</b><span class="soon">To be announced soon</span></div><div class="jr"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" />
+  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+</svg></span><b>Seats</b><span>10 to 15 members</span></div></div>
+<p class="lead">Seats are limited. Register your interest and we contact you on WhatsApp.</p>
+<div class="cta"><a class="btn" href="register/">Register now</a></div>
+<div class="share"><span>Share</span><button type="button" class="chipbtn" data-copy="Link copied"><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="18" cy="5" r="3" />
+  <circle cx="6" cy="12" r="3" />
+  <circle cx="18" cy="19" r="3" />
+  <line x1="8.59" x2="15.42" y1="13.51" y2="17.49" />
+  <line x1="15.41" x2="8.59" y1="6.51" y2="10.49" />
+</svg></span>Copy link</button>
+<a class="chipbtn" target="_blank" rel="noopener" data-wa="Send on WhatsApp" href="#">Send on WhatsApp</a></div>
+<p class="note">Course content and certificates belong to the providers that issue them (for example Anthropic Academy). The circle adds practice, feedback and community.</p></div></section>
+<footer><div class="wrap">AI Learning Circle, Baghdad</div></footer></div></main>
+<div class="fab"><a class="btn" id="fabBtn" href="register/">سجّل الآن</a></div>
+<div class="toast" id="toast" role="status"></div>
 <script>
-// Supabase project URL and the public anon / publishable key (safe to publish; visitors can only call register())
-var SUPABASE_URL = "https://osbnvoucfyccjlcqkpsh.supabase.co";
-var SUPABASE_KEY = "sb_publishable_opEH-Ks86qDpe6XhXRFWAw_gqSlFg3z";
-var S = {
-  ar: {
-    eyebrow: "AI Learning Circle", title: "استمارة الانضمام",
-    sub: "أجب عن الأسئلة التالية في دقيقتين. نختار الأعضاء الأوائل لتناسب الدائرة، ونتواصل معك عبر واتساب.",
-    chips: ["كل أسبوعين", "150 دقيقة", "10 إلى 15 مقعداً", "بغداد، وجهاً لوجه"],
-    secAbout: "عنك", name: "الاسم الكامل", whatsapp: "رقم واتساب", email: "البريد الإلكتروني", optional: "(اختياري)",
-    role: "مجالك (عمل أو دراسة)", org: "الجهة أو الشركة أو الجامعة",
-    area: "أين تسكن؟", areaHint: "يكفي المنطقة أو الحي. يساعدنا على اختيار مكان مناسب.",
-    tools: "أي أدوات ذكاء اصطناعي تستخدم؟ (اختر كل ما ينطبق)", toolList: ["Claude", "ChatGPT", "Gemini", "أدوات أخرى", "لم أستخدم بعد"],
-    secWhen: "أوقاتك المناسبة", days: "ما الأيام المناسبة لك؟", dayOpts: ["أيام الأسبوع (الأحد إلى الخميس)", "نهاية الأسبوع (الجمعة والسبت)", "كلاهما مناسب"],
-    hours: "ما الساعات المناسبة لك؟ (اختر كل ما يناسبك)", hourOpts: ["صباحاً (9 إلى 12)", "بعد الظهر (12 إلى 4)", "مساءً مبكراً (4 إلى 7)", "مساءً (7 إلى 10)"], hoursHint: "نختار الوقت الذي يناسب أكثر الأعضاء.",
-    secExp: "خبرتك وهدفك", level: "كيف تستخدم الذكاء الاصطناعي اليوم؟",
-    why: "لماذا تريد الانضمام؟", problem: "مشكلة في عملك تريد حلها بالذكاء الاصطناعي", problemHint: "جملة أو جملتان تكفي. نستفيد منها لتحديد موضوعات العروض.",
-    pitch: "هل تريد عرض فكرة أو تجربة في الجلسات الأولى؟",
-    secCommit: "التزامك", attend: "هل تستطيع الحضور وجهاً لوجه في بغداد؟",
-    commitLbl: "أوافق على ما يلي",
-    commit: ["حضور أربع جلسات خلال ثمانية أسابيع، كل أسبوعين جلسة (150 دقيقة).", "إنجاز واجب 60 إلى 90 دقيقة قبل كل جلسة.", "الحفاظ على الثقة: ما يُقال في الدائرة يبقى فيها، ولا أدخل بيانات عملاء أو جهة عملي في أدوات الذكاء الاصطناعي.", "تقييم الجلسة بثلاثة أسئلة سريعة بعد كل جلسة."],
-    consent: "أوافق على استخدام بياناتي لتنظيم الدائرة فقط.",
-    submit: "أرسل طلب الانضمام", sending: "جارٍ الحفظ…",
-    levels: ["جديد على الذكاء الاصطناعي", "أجرّبه أحياناً", "أستخدمه كل أسبوع", "أستخدمه يومياً في عملي"],
-    pitches: ["نعم", "ربما لاحقاً", "لا، أريد التعلّم فقط"],
-    attends: ["نعم، كل أسبوعين", "غالباً نعم", "لست متأكداً"],
-    fields: ["رائد أعمال", "مهندس", "مدير", "باحث", "أكاديمي", "طالب", "القطاع العام", "القطاع الخاص", "غير ذلك"],
-    pick: "اختر",
-    e: { area: "اكتب منطقتك.", tools: "اختر خياراً واحداً على الأقل.", days: "اختر خياراً.", hours: "اختر ساعة واحدة على الأقل.", name: "اكتب اسمك الكامل.", whatsapp: "اكتب رقم واتساب صحيحاً، مثال: +964 7XX XXX XXXX.", email: "البريد غير صحيح.", role: "اختر مجال عملك.", level: "اختر خياراً.", why: "اكتب سبباً مختصراً.", pitch: "اختر خياراً.", attend: "اختر خياراً.", commit: "نحتاج موافقتك على النقاط الأربع.", consent: "الموافقة مطلوبة." },
-    errTop: "راجع الحقول المظللة.",
-    doneTitle: "وصلنا طلبك", msgLbl: "نص طلبك",
-    savedText: "حُفظ طلبك في قائمة المنظّم. سنتواصل معك على واتساب بعد اختيار المجموعة الأولى.",
-    sendText: "لإكمال التسجيل أرسل النص أدناه إلى المنظّم على واتساب. تحتاج حساب Claude ودعوة من المنظّم لحفظ الطلب مباشرة في القائمة.",
-    saved: "تم الحفظ", todo: "بقيت خطوة واحدة", copy: "انسخ النص", copied: "تم النسخ", copyFail: "حدّد النص أعلاه وانسخه يدوياً.", wa: "افتح واتساب", edit: "عدّل إجاباتي",
-    msgHead: "طلب انضمام: AI Learning Circle", labels: { area: "المنطقة", tools: "أدوات الذكاء الاصطناعي", days: "الأيام", hours: "الساعات", name: "الاسم", whatsapp: "واتساب", email: "البريد", role: "المجال", org: "الجهة", level: "الخبرة مع AI", why: "سبب الانضمام", problem: "مشكلة أريد حلها", pitch: "عرض فكرة", attend: "الحضور" }, commitLine: "وافقت على شروط الالتزام الأربعة.",
-    ownerTitle: "الطلبات المسجّلة", seatsOf: "من مقاعد الدائرة", noRegs: "لا توجد طلبات بعد.", csv: "نزّل ملف CSV", csvOk: "تم حفظ الملف.", csvFail: "تعذّر حفظ الملف.",
-    cols: ["الاسم", "واتساب", "المجال", "الخبرة", "المنطقة", "الأدوات", "الأيام", "الساعات", "الحضور", "عرض فكرة", "التاريخ"], langBtn: "English"
-  },
-  en: {
-    eyebrow: "AI Learning Circle", title: "Join the circle",
-    sub: "Answer a few questions in two minutes. We pick the first members so the circle works well, then contact you on WhatsApp.",
-    chips: ["Every two weeks", "150 minutes", "10 to 15 seats", "Baghdad, face to face"],
-    secAbout: "About you", name: "Full name", whatsapp: "WhatsApp number", email: "Email", optional: "(optional)",
-    role: "Your field (work or study)", org: "Organisation, company or university",
-    area: "Where do you live?", areaHint: "Area or neighbourhood is enough. It helps us choose a convenient place.",
-    tools: "Which AI tools do you use? (choose all that apply)", toolList: ["Claude", "ChatGPT", "Gemini", "Other tools", "None yet"],
-    secWhen: "Your availability", days: "Which days suit you?", dayOpts: ["Weekdays (Sunday to Thursday)", "Weekend (Friday and Saturday)", "Either works"],
-    hours: "Which hours suit you? (choose all that work)", hourOpts: ["Morning (9 to 12)", "Afternoon (12 to 4)", "Early evening (4 to 7)", "Evening (7 to 10)"], hoursHint: "We will pick the time that suits most members.",
-    secExp: "Your experience and goal", level: "How do you use AI today?",
-    why: "Why do you want to join?", problem: "A work problem you would like to solve with AI", problemHint: "One or two sentences is enough. It helps us plan the pitches.",
-    pitch: "Would you like to present an idea or experiment in the first sessions?",
-    secCommit: "Your commitment", attend: "Can you attend face to face in Baghdad?",
-    commitLbl: "I agree to",
-    commit: ["Attend four sessions in eight weeks, one every two weeks (150 minutes each).", "Do the homework: 60 to 90 minutes before each session.", "Keep trust: what is said in the circle stays there, and I put no client or employer data into AI tools.", "Rate each session with three quick questions."],
-    consent: "I agree that my details are used only to organise the circle.",
-    submit: "Send my application", sending: "Saving…",
-    levels: ["New to AI", "I try it sometimes", "I use it weekly", "I use it daily at work"],
-    pitches: ["Yes", "Maybe later", "No, I want to learn first"],
-    attends: ["Yes, every two weeks", "Probably", "Not sure"],
-    fields: ["Entrepreneur", "Engineer", "Manager", "Researcher", "Academic", "Student", "Public sector", "Private sector", "Other"],
-    pick: "Choose",
-    e: { area: "Tell us your area.", tools: "Choose at least one.", days: "Choose one.", hours: "Choose at least one hour.", name: "Enter your full name.", whatsapp: "Enter a valid WhatsApp number, for example +964 7XX XXX XXXX.", email: "This email looks wrong.", role: "Choose your field.", level: "Choose one.", why: "Write a short reason.", pitch: "Choose one.", attend: "Choose one.", commit: "We need you to agree to all four points.", consent: "Your agreement is required." },
-    errTop: "Check the highlighted fields.",
-    doneTitle: "We received your application", msgLbl: "Your application text",
-    savedText: "Your application is saved in the organiser's list. We will contact you on WhatsApp once the first group is chosen.",
-    sendText: "To finish, send the text below to the organiser on WhatsApp. Saving straight to the list needs a Claude account and an invitation from the organiser.",
-    saved: "Saved", todo: "One step left", copy: "Copy text", copied: "Copied", copyFail: "Select the text above and copy it by hand.", wa: "Open WhatsApp", edit: "Edit my answers",
-    msgHead: "Application: AI Learning Circle", labels: { area: "Area", tools: "AI tools", days: "Days", hours: "Hours", name: "Name", whatsapp: "WhatsApp", email: "Email", role: "Field", org: "Organisation", level: "AI experience", why: "Why I want to join", problem: "Problem I want to solve", pitch: "Present an idea", attend: "Attendance" }, commitLine: "I agreed to the four commitments.",
-    ownerTitle: "Registered applications", seatsOf: "of the circle's seats", noRegs: "No applications yet.", csv: "Download CSV", csvOk: "File saved.", csvFail: "The file could not be saved.",
-    cols: ["Name", "WhatsApp", "Field", "Experience", "Area", "AI tools", "Days", "Hours", "Attendance", "Pitch", "Date"], langBtn: "العربية"
-  }
-};
-
-var lang = "ar";
-var $ = function (id) { return document.getElementById(id); };
-var app = $("app");
-function t(k) { return S[lang][k]; }
-
-S.ar.okText = "سجّلنا طلبك. سنتواصل معك على واتساب بعد اختيار المجموعة الأولى."; S.en.okText = "We recorded your application. We will contact you on WhatsApp once the first group is chosen.";
-S.ar.okUpdated = "حدّثنا طلبك بالبيانات الجديدة."; S.en.okUpdated = "We updated your application with the new details.";
-S.ar.received = "تم الاستلام"; S.en.received = "Received";
-S.ar.errSend = "تعذّر الإرسال. حاول مرة أخرى بعد قليل."; S.en.errSend = "Could not send. Please try again shortly.";
-S.ar.errMany = "محاولات كثيرة. حاول لاحقاً."; S.en.errMany = "Too many attempts. Please try later.";
-
-function buildChoices(boxId, name, labels, type) {
-  var box = $(boxId); box.innerHTML = "";
-  labels.forEach(function (l, i) {
-    var lab = document.createElement("label"); lab.className = "choice";
-    var inp = document.createElement("input"); inp.type = type; inp.name = name; inp.value = String(i);
-    var sp = document.createElement("span"); sp.setAttribute("data-lbl", name + i);
-    lab.appendChild(inp); lab.appendChild(sp); box.appendChild(lab);
-  });
-}
-function fillLabels() {
-  var map = { level: "levels", pitch: "pitches", attend: "attends", commit: "commit", tools: "toolList", days: "dayOpts", hours: "hourOpts" };
-  Object.keys(map).forEach(function (n) {
-    S[lang][map[n]].forEach(function (txt, i) { var el = document.querySelector('[data-lbl="' + n + i + '"]'); if (el) el.textContent = txt; });
-  });
-}
-function fillRole() {
-  var sel = $("role"), cur = sel.value; sel.innerHTML = "";
-  var o = document.createElement("option"); o.value = ""; o.textContent = t("pick"); sel.appendChild(o);
-  t("fields").forEach(function (f, i) { var op = document.createElement("option"); op.value = String(i); op.textContent = f; sel.appendChild(op); });
-  sel.value = cur;
-}
-function renderDone(updated) {
-  $("formView").hidden = true; $("doneView").hidden = false;
-  $("doneStatus").textContent = t("received");
-  $("doneTitle").textContent = t("doneTitle");
-  $("doneText").textContent = updated ? t("okUpdated") : t("okText");
-  $("editBtn").textContent = t("edit");
-}
-var lastUpdated = false;
-function applyLang() {
-  app.lang = lang; app.dir = lang === "ar" ? "rtl" : "ltr";
-  document.querySelectorAll("[data-i18n]").forEach(function (el) { var v = t(el.getAttribute("data-i18n")); if (typeof v === "string") el.textContent = v; });
-  $("chips").innerHTML = ""; t("chips").forEach(function (c) { var li = document.createElement("li"); li.textContent = c; $("chips").appendChild(li); });
-  $("langBtn").textContent = t("langBtn");
-  fillLabels(); fillRole();
-  if (!$("doneView").hidden) renderDone(lastUpdated);
-  document.querySelectorAll(".field.invalid").forEach(function (f) { f.classList.remove("invalid"); var e = f.querySelector("[data-err]"); if (e) e.textContent = ""; });
-}
-function checkedIdx(name) { return Array.prototype.map.call(document.querySelectorAll('input[name="' + name + '"]:checked'), function (i) { return Number(i.value); }); }
-function radioVal(name) { var r = document.querySelector('input[name="' + name + '"]:checked'); return r ? Number(r.value) : null; }
-function readForm() {
-  return {
-    name: $("name").value.trim(), whatsapp: $("whatsapp").value.trim(), email: $("email").value.trim(),
-    role: $("role").value === "" ? null : Number($("role").value), org: $("org").value.trim(), area: $("area").value.trim(),
-    tools: checkedIdx("tools"), days: radioVal("days"), hours: checkedIdx("hours"),
-    level: radioVal("level"), why: $("why").value.trim(), problem: $("problem").value.trim(),
-    pitch: radioVal("pitch"), attend: radioVal("attend"),
-    commit: document.querySelectorAll('input[name="commit"]:checked').length === 4, consent: $("consent").checked
-  };
-}
-function validate(r) {
-  var errs = {};
-  if (r.name.length < 2) errs.name = 1;
-  if (r.whatsapp.replace(/\D/g, "").length < 8) errs.whatsapp = 1;
-  if (r.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(r.email)) errs.email = 1;
-  if (r.role == null) errs.role = 1;
-  if (r.area.length < 2) errs.area = 1;
-  if (!r.tools.length) errs.tools = 1;
-  if (r.days == null) errs.days = 1;
-  if (!r.hours.length) errs.hours = 1;
-  if (r.level == null) errs.level = 1;
-  if (r.why.length < 3) errs.why = 1;
-  if (r.pitch == null) errs.pitch = 1;
-  if (r.attend == null) errs.attend = 1;
-  if (!r.commit) errs.commit = 1;
-  if (!r.consent) errs.consent = 1;
-  return errs;
-}
-function showErrors(errs) {
-  document.querySelectorAll(".field[data-f]").forEach(function (f) {
-    var k = f.getAttribute("data-f"), e = f.querySelector("[data-err]");
-    if (errs[k]) { f.classList.add("invalid"); if (e) e.textContent = S[lang].e[k]; } else { f.classList.remove("invalid"); if (e) e.textContent = ""; }
-  });
-  var first = Object.keys(errs)[0];
-  if (first) { var el = document.querySelector('.field[data-f="' + first + '"]'); var focusable = el && el.querySelector("input,select,textarea"); if (focusable) focusable.focus(); }
-}
-$("regForm").addEventListener("submit", function (ev) {
-  ev.preventDefault();
-  var r = readForm(), errs = validate(r);
-  showErrors(errs);
-  $("submitNote").textContent = Object.keys(errs).length ? t("errTop") : "";
-  if (Object.keys(errs).length) return;
-  var btn = $("submitBtn"); btn.disabled = true; btn.textContent = t("sending");
-  var body = Object.assign({}, r, { lang: lang, website: $("website").value });
-  fetch(SUPABASE_URL + "/rest/v1/rpc/register", { method: "POST", headers: { "Content-Type": "application/json", "apikey": SUPABASE_KEY }, body: JSON.stringify({ d: body }) })
-    .then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { status: j && j.error === "too_many" ? 429 : (j && j.error === "invalid" ? 400 : (res.ok ? 200 : res.status)), j: j }; }); })
-    .then(function (x) {
-      btn.disabled = false; btn.textContent = t("submit");
-      if (x.j && x.j.ok) { lastUpdated = !!x.j.updated; renderDone(lastUpdated); window.scrollTo(0, 0); }
-      else if (x.status === 429) { $("submitNote").textContent = t("errMany"); }
-      else if (x.status === 400 && x.j && x.j.fields) { $("submitNote").textContent = t("errTop"); }
-      else { $("submitNote").textContent = t("errSend"); }
-    })
-    .catch(function () { btn.disabled = false; btn.textContent = t("submit"); $("submitNote").textContent = t("errSend"); });
-});
-$("editBtn").addEventListener("click", function () { $("doneView").hidden = true; $("formView").hidden = false; window.scrollTo(0, 0); });
-$("langBtn").addEventListener("click", function () { lang = lang === "ar" ? "en" : "ar"; applyLang(); });
-
-buildChoices("levelChoices", "level", S.ar.levels, "radio");
-buildChoices("pitchChoices", "pitch", S.ar.pitches, "radio");
-buildChoices("attendChoices", "attend", S.ar.attends, "radio");
-buildChoices("commitChoices", "commit", S.ar.commit, "checkbox");
-buildChoices("toolsChoices", "tools", S.ar.toolList, "checkbox");
-buildChoices("daysChoices", "days", S.ar.dayOpts, "radio");
-buildChoices("hoursChoices", "hours", S.ar.hourOpts, "checkbox");
-applyLang();
+(function(){
+var root=document.documentElement,toast=document.getElementById('toast');
+function setLang(l){root.lang=l;root.dir=l==='ar'?'rtl':'ltr';try{localStorage.setItem('ailc_lang',l)}catch(e){}
+ document.getElementById('langBtn').textContent=l==='ar'?'English':'العربية';
+ document.getElementById('barBtn').textContent=l==='ar'?'سجّل الآن':'Register now';
+ document.getElementById('fabBtn').textContent=l==='ar'?'سجّل الآن':'Register now';
+ var m=document.querySelector('.L[data-l="'+l+'"]');document.title=l==='ar'?'AI Learning Circle | لا تتعلّم الذكاء الاصطناعي وحدك':"AI Learning Circle | Don't learn AI alone";
+ var u=location.href.split('#')[0].split('?')[0],t=l==='ar'?'دعوة للانضمام إلى AI Learning Circle في بغداد: ':'Invitation to join the AI Learning Circle in Baghdad: ';
+ document.querySelectorAll('[data-wa]').forEach(function(a){a.href='https://wa.me/?text='+encodeURIComponent(t+u)});}
+var l='ar';try{l=localStorage.getItem('ailc_lang')||'ar'}catch(e){}if(location.hash==='#en')l='en';if(location.hash==='#ar')l='ar';
+setLang(l==='en'?'en':'ar');
+document.getElementById('langBtn').addEventListener('click',function(){setLang(root.lang==='ar'?'en':'ar')});
+function say(t){toast.textContent=t;toast.classList.add('on');setTimeout(function(){toast.classList.remove('on')},2000)}
+document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+ var u=location.href.split('#')[0].split('?')[0];
+ (navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).then(function(){say(b.getAttribute('data-copy'))},function(){say(u)})})});
+})();
 </script></body></html>
