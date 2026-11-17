@@ -321,7 +321,7 @@ function fillLabels() {
 function fillRole() {
   var sel = $("role"), cur = sel.value; sel.innerHTML = "";
   var o = document.createElement("option"); o.value = ""; o.textContent = t("pick"); sel.appendChild(o);
-  t("fields").forEach(function (f, i) { var op = document.createElement("option"); op.value = String(i); op.textContent = f; sel.appendChild(op); });
+  t("fields").forEach(function (f, i) { if (i === 5) return; /* Student option hidden; index kept so saved values stay the same */ var op = document.createElement("option"); op.value = String(i); op.textContent = f; sel.appendChild(op); });
   sel.value = cur;
 }
 function renderDone(updated) {
