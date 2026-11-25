@@ -300,7 +300,7 @@ var S = {
     attends: ["نعم، كل أسبوعين", "غالباً نعم", "لست متأكداً"],
     fields: ["رائد أعمال", "مهندس", "مدير", "باحث", "أكاديمي", "طالب", "القطاع العام", "القطاع الخاص", "غير ذلك"],
     pick: "اختر",
-    e: { area: "اكتب منطقتك.", tools: "اختر خياراً واحداً على الأقل.", days: "اختر خياراً.", hours: "اختر ساعة واحدة على الأقل.", name: "اكتب اسمك الكامل.", whatsapp: "اكتب رقم واتساب صحيحاً، مثال: +964 7XX XXX XXXX.", email: "البريد غير صحيح.", role: "اختر مجال عملك.", level: "اختر خياراً.", why: "اكتب سبباً مختصراً.", pitch: "اختر خياراً.", attend: "اختر خياراً.", commit: "نحتاج موافقتك على النقاط الأربع.", consent: "الموافقة مطلوبة." },
+    e: { area: "اكتب منطقتك.", tools: "اختر أداة واحدة على الأقل، أو «لم أستخدم بعد».", days: "اختر الأيام المناسبة لك.", hours: "اختر ساعة واحدة على الأقل.", name: "اكتب اسمك الكامل.", whatsapp: "اكتب رقم واتساب صحيحاً، مثال: +964 7XX XXX XXXX.", email: "البريد غير صحيح.", role: "اختر مجال عملك.", level: "اختر مستوى استخدامك للذكاء الاصطناعي.", why: "اكتب سبباً مختصراً.", pitch: "اختر إن كنت تريد عرض فكرة.", attend: "اختر إن كنت تستطيع الحضور وجهاً لوجه.", commit: "نحتاج موافقتك على النقاط الأربع.", consent: "الموافقة مطلوبة." },
     errTop: "راجع الحقول المظللة.",
     doneTitle: "وصلنا طلبك", msgLbl: "نص طلبك",
     savedText: "حُفظ طلبك في قائمة المنظّم. سنتواصل معك على واتساب بعد اختيار المجموعة الأولى.",
@@ -333,7 +333,7 @@ var S = {
     attends: ["Yes, every two weeks", "Probably", "Not sure"],
     fields: ["Entrepreneur", "Engineer", "Manager", "Researcher", "Academic", "Student", "Public sector", "Private sector", "Other"],
     pick: "Choose",
-    e: { area: "Tell us your area.", tools: "Choose at least one.", days: "Choose one.", hours: "Choose at least one hour.", name: "Enter your full name.", whatsapp: "Enter a valid WhatsApp number, for example +964 7XX XXX XXXX.", email: "This email looks wrong.", role: "Choose your field.", level: "Choose one.", why: "Write a short reason.", pitch: "Choose one.", attend: "Choose one.", commit: "We need you to agree to all four points.", consent: "Your agreement is required." },
+    e: { area: "Tell us your area.", tools: "Choose at least one tool, or \"None yet\".", days: "Choose the days that suit you.", hours: "Choose at least one hour.", name: "Enter your full name.", whatsapp: "Enter a valid WhatsApp number, for example +964 7XX XXX XXXX.", email: "This email looks wrong.", role: "Choose your field.", level: "Choose how you use AI today.", why: "Write a short reason.", pitch: "Choose whether you want to present an idea.", attend: "Choose whether you can attend face to face.", commit: "We need you to agree to all four points.", consent: "Your agreement is required." },
     errTop: "Check the highlighted fields.",
     doneTitle: "We received your application", msgLbl: "Your application text",
     savedText: "Your application is saved in the organiser's list. We will contact you on WhatsApp once the first group is chosen.",
@@ -353,7 +353,7 @@ function t(k) { return S[lang][k]; }
 S.ar.okText = "سجّلنا طلبك. سنتواصل معك على واتساب بعد اختيار المجموعة الأولى."; S.en.okText = "We recorded your application. We will contact you on WhatsApp once the first group is chosen.";
 S.ar.okUpdated = "حدّثنا طلبك بالبيانات الجديدة."; S.en.okUpdated = "We updated your application with the new details.";
 S.ar.received = "تم الاستلام"; S.en.received = "Received";
-S.ar.errSend = "تعذّر الإرسال. حاول مرة أخرى بعد قليل."; S.en.errSend = "Could not send. Please try again shortly.";
+S.ar.errSend = "تعذّر الإرسال. إجاباتك ما زالت هنا، حاول مرة أخرى بعد قليل."; S.en.errSend = "Could not send. Your answers are still here. Please try again shortly.";
 S.ar.errMany = "محاولات كثيرة. حاول لاحقاً."; S.en.errMany = "Too many attempts. Please try later.";
 S.ar.back = "السابق"; S.en.back = "Back"; S.ar.next = "التالي"; S.en.next = "Next";
 S.ar.stepOf = "الخطوة {n} من {m}: "; S.en.stepOf = "Step {n} of {m}: ";

@@ -343,13 +343,13 @@ function setStatus(r, s, sel) {
   api("registrations?id=eq." + r.id, { method: "PATCH", headers: { "Prefer": "return=representation" }, body: JSON.stringify({ status: s, updated_at: new Date().toISOString() }) })
     .then(function (x) { return x.ok ? x.json() : Promise.reject(); })
     .then(function (d) { if (!d.length) throw 0; r.status = s; sel.disabled = false; render(); toast("Saved"); })
-    .catch(function () { sel.disabled = false; sel.value = old; toast("Not saved"); });
+    .catch(function () { sel.disabled = false; sel.value = old; toast("Not saved. Check your connection and try again."); });
 }
 function removeRow(r) {
   api("registrations?id=eq." + r.id, { method: "DELETE", headers: { "Prefer": "return=representation" } })
     .then(function (x) { return x.ok ? x.json() : Promise.reject(); })
     .then(function (d) { if (!d.length) throw 0; rows = rows.filter(function (x) { return x.id !== r.id; }); delete openIds[r.id]; render(); toast("Deleted"); })
-    .catch(function () { toast("Not deleted"); });
+    .catch(function () { toast("Not deleted. Check your connection and try again."); });
 }
 
 function stamp() { var d = new Date(); return d.getFullYear() + String(d.getMonth() + 1).padStart(2, "0") + String(d.getDate()).padStart(2, "0"); }
@@ -373,13 +373,13 @@ $("loginForm").addEventListener("submit", function (ev) {
     .then(function () { $("loginBtn").disabled = false; $("pw").value = ""; });
 });
 $("outBtn").addEventListener("click", signOut);
-$("refreshBtn").addEventListener("click", function () { setLoading(); fetchRows().then(function () { toast("Refreshed"); }).catch(function () { toast("Could not refresh"); render(); }); });
+$("refreshBtn").addEventListener("click", function () { setLoading(); fetchRows().then(function () { toast("Refreshed"); }).catch(function () { toast("Could not refresh. Check your connection and try again."); render(); }); });
 $("q").addEventListener("input", drawTable);
 $("xNames").addEventListener("click", function () { exportXlsx(pick(["name", "whatsapp"]), "AILC_names_numbers"); });
 $("xAll").addEventListener("click", function () { exportXlsx(COLS, "AILC_applications"); });
 $("copyNums").addEventListener("click", function () {
   var t = shown.map(function (r) { return r.name + "\t" + r.whatsapp; }).join("\n");
-  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast("Copied " + shown.length + " rows"); }, function () { toast("Copy not allowed here"); });
+  (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(function () { toast("Copied " + shown.length + " rows"); }, function () { toast("Your browser blocked copying. Use Export names and numbers instead."); });
 });
 load(); if (sess && sess.access) { show("app"); setLoading(); fetchRows().catch(function () { show("login"); }); }
 </script></body></html>
