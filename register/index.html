@@ -139,7 +139,7 @@ fieldset { margin-bottom: 20px; }
 .dring svg { width: 100%; height: auto; display: block; overflow: visible; }
 </style></head><body>
 <main id="app" lang="ar" dir="rtl">
-  <header class="hero">
+  <header class="hero" id="hero">
     <div class="top">
       <span class="eyebrow" data-i18n="eyebrow"></span>
       <button type="button" class="lang" id="langBtn"></button>
@@ -384,7 +384,7 @@ function fillRole() {
   sel.value = cur;
 }
 function renderDone(updated) {
-  $("formView").hidden = true; $("doneView").hidden = false;
+  $("formView").hidden = true; $("hero").hidden = true; $("doneView").hidden = false;
   $("doneStatus").textContent = t("received");
   $("doneTitle").textContent = t("doneTitle");
   $("doneText").textContent = updated ? t("okUpdated") : t("okText");
@@ -488,7 +488,7 @@ $("regForm").addEventListener("submit", function (ev) {
     })
     .catch(function () { btn.disabled = false; btn.textContent = t("submit"); $("submitNote").textContent = t("errSend"); });
 });
-$("editBtn").addEventListener("click", function () { $("doneView").hidden = true; $("formView").hidden = false; goStep(0); window.scrollTo(0, 0); });
+$("editBtn").addEventListener("click", function () { $("doneView").hidden = true; $("hero").hidden = false; $("formView").hidden = false; goStep(0); window.scrollTo(0, 0); });
 $("nextBtn").addEventListener("click", function () { $("regForm").requestSubmit(); });
 $("backBtn").addEventListener("click", function () { if (cur > 0) goStep(cur - 1); });
 $("calBtn").addEventListener("click", addToCal);
