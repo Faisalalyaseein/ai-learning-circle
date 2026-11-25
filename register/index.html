@@ -42,8 +42,7 @@ body { background: var(--bg); color: var(--ink); font-family: var(--f-latin); fo
 #app[lang="ar"] h1, #app[lang="ar"] h2, #app[lang="ar"] .eyebrow, #app[lang="ar"] button { letter-spacing: 0; }
 
 .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
-.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-text); }
-#app[lang="ar"] .eyebrow { text-transform: none; }
+.eyebrow { font-size: 14px; font-weight: 600; color: var(--gold-text); }
 .lang { font: inherit; font-size: 13px; font-weight: 600; background: transparent; color: var(--ink); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
 .lang:hover { border-color: var(--gold); }
 h1 { font-size: 30px; line-height: 1.2; margin: 6px 0 8px; font-weight: 700; text-wrap: balance; }
@@ -53,8 +52,8 @@ h1 { font-size: 30px; line-height: 1.2; margin: 6px 0 8px; font-weight: 700; tex
 
 form, .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; }
 fieldset { border: 0; margin: 0 0 26px; padding: 0; min-width: 0; }
-legend { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--gold-text); padding: 0; margin-bottom: 12px; }
-#app[lang="ar"] legend { text-transform: none; letter-spacing: 0; font-size: 14px; }
+legend { font-size: 19px; font-weight: 700; color: var(--ink); padding: 0; margin-bottom: 16px; }
+legend:focus { outline: none; }
 .field { display: grid; gap: 6px; margin-bottom: 16px; min-width: 0; }
 .field > label, .field > .lbl { font-weight: 600; font-size: 14px; }
 .opt { font-weight: 400; color: var(--muted); font-size: 13px; }
@@ -96,20 +95,70 @@ tr:last-child td { border-bottom: 0; }
 @media (prefers-reduced-motion: no-preference) { .choice, .btn, .lang { transition: border-color .15s, background-color .15s, filter .15s; } }
 .hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 html{color-scheme:light}
+
+/* hero: same look as the landing page */
+.hero { background: #0B0B09; color: #F8F6EC; border-radius: 14px; padding: 16px 20px 22px; margin-bottom: 18px; }
+.hero .top { margin-bottom: 14px; }
+.hero .eyebrow { color: #D2B356; }
+.hero .lang { color: #F8F6EC; border-color: #4A4637; }
+.hg { display: grid; grid-template-columns: minmax(0, 1fr) 118px; gap: 16px; align-items: center; }
+.hero h1 { margin: 0 0 8px; color: #F8F6EC; }
+.hero .sub { color: #D8D2BF; margin: 0; }
+.rw svg { width: 100%; height: auto; display: block; overflow: visible; }
+.orbit { fill: none; stroke: #3D3826; stroke-width: 2; stroke-dasharray: 2 8; }
+.seat { fill: rgba(210,179,86,.16); stroke: #D2B356; stroke-width: 2; }
+.seat.you { fill: #D2B356; }
+.seat-ring { fill: none; stroke: #56A1D2; stroke-width: 3; }
+.when { margin-top: 14px; }
+.when .jr { display: flex; gap: 12px; align-items: baseline; border-bottom: 1px solid #3D3826; padding: 8px 0; font-size: 14px; }
+.when .jr:last-child { border-bottom: 0; }
+.when .jr b { min-width: 84px; color: #D2B356; font-weight: 600; flex: none; }
+.card .when .jr { border-color: var(--line); }
+.card .when .jr b { color: var(--gold-text); }
+@media (prefers-reduced-motion: no-preference) {
+  .rw .seat { opacity: 0; animation: seat .5s ease-out forwards; animation-delay: calc(var(--i, 0) * 70ms + 150ms); }
+  @keyframes seat { from { opacity: 0; transform: scale(.4); transform-box: fill-box; transform-origin: center; } to { opacity: 1; transform: scale(1); transform-box: fill-box; transform-origin: center; } }
+}
+/* steps */
+.prog { margin: 0 0 16px; }
+.prog ol { list-style: none; display: flex; gap: 8px; padding: 0; margin: 0 0 8px; }
+.prog li { flex: 1; height: 6px; border-radius: 3px; background: var(--line); }
+.prog li.done { background: var(--gold); }
+.prog li.cur { background: var(--blue); }
+.pl { font-size: 13px; color: var(--muted); margin: 0; }
+fieldset[hidden] { display: none; }
+fieldset { margin-bottom: 20px; }
+/* choices as pills */
+.choices.pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pills .choice { position: relative; padding: 8px 14px; border-radius: 8px; }
+.pills .choice input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+.pills .choice:has(input:checked) { background: var(--gold); border-color: var(--gold); color: var(--on-gold); font-weight: 600; }
+.pills .choice:has(input:focus-visible) { outline: 3px solid var(--blue); outline-offset: 2px; }
+.row .btn[hidden] { display: none; }
+.dring { width: 120px; margin: 0 0 10px; }
+.dring svg { width: 100%; height: auto; display: block; overflow: visible; }
 </style></head><body>
 <main id="app" lang="ar" dir="rtl">
-  <div class="top">
-    <span class="eyebrow" data-i18n="eyebrow"></span>
-    <button type="button" class="lang" id="langBtn"></button>
-  </div>
-  <h1 data-i18n="title"></h1>
-  <p class="sub" data-i18n="sub"></p>
-  <ul class="chips" id="chips"></ul>
+  <header class="hero">
+    <div class="top">
+      <span class="eyebrow" data-i18n="eyebrow"></span>
+      <button type="button" class="lang" id="langBtn"></button>
+    </div>
+    <div class="hg">
+      <div>
+        <h1 data-i18n="title"></h1>
+        <p class="sub" data-i18n="sub"></p>
+      </div>
+      <div class="rw"><svg viewBox="0 0 280 280" aria-hidden="true"><circle cx="140" cy="140" r="104" class="orbit"/><circle class="seat you" cx="140.0" cy="36.0" r="17"/><circle class="seat-ring" cx="140.0" cy="36.0" r="25"/><circle class="seat" style="--i:1" cx="192.0" cy="49.9" r="14"/><circle class="seat" style="--i:2" cx="230.1" cy="88.0" r="14"/><circle class="seat" style="--i:3" cx="244.0" cy="140.0" r="14"/><circle class="seat" style="--i:4" cx="230.1" cy="192.0" r="14"/><circle class="seat" style="--i:5" cx="192.0" cy="230.1" r="14"/><circle class="seat" style="--i:6" cx="140.0" cy="244.0" r="14"/><circle class="seat" style="--i:7" cx="88.0" cy="230.1" r="14"/><circle class="seat" style="--i:8" cx="49.9" cy="192.0" r="14"/><circle class="seat" style="--i:9" cx="36.0" cy="140.0" r="14"/><circle class="seat" style="--i:10" cx="49.9" cy="88.0" r="14"/><circle class="seat" style="--i:11" cx="88.0" cy="49.9" r="14"/></svg></div>
+    </div>
+    <div class="when" id="heroWhen"></div>
+  </header>
 
   <section id="formView">
     <form id="regForm" novalidate>
-      <fieldset>
-        <legend data-i18n="secAbout"></legend>
+      <div class="prog"><ol id="progBars"></ol><p class="pl" id="progLabel"></p></div>
+      <fieldset data-step="0">
+        <legend tabindex="-1" data-i18n="secAbout"></legend>
         <div class="field" data-f="name">
           <label for="name" data-i18n="name"></label>
           <input type="text" id="name" autocomplete="name" maxlength="80">
@@ -142,16 +191,16 @@ html{color-scheme:light}
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend data-i18n="secExp"></legend>
+      <fieldset data-step="1">
+        <legend tabindex="-1" data-i18n="secExp"></legend>
         <div class="field" data-f="level">
           <span class="lbl" data-i18n="level"></span>
-          <div class="choices" id="levelChoices" role="radiogroup"></div>
+          <div class="choices pills" id="levelChoices" role="radiogroup"></div>
           <p class="err" data-err></p>
         </div>
         <div class="field" data-f="tools">
           <span class="lbl" data-i18n="tools"></span>
-          <div class="choices" id="toolsChoices"></div>
+          <div class="choices pills" id="toolsChoices"></div>
           <p class="err" data-err></p>
         </div>
         <div class="field" data-f="why">
@@ -166,31 +215,31 @@ html{color-scheme:light}
         </div>
         <div class="field" data-f="pitch">
           <span class="lbl" data-i18n="pitch"></span>
-          <div class="choices" id="pitchChoices" role="radiogroup"></div>
+          <div class="choices pills" id="pitchChoices" role="radiogroup"></div>
           <p class="err" data-err></p>
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend data-i18n="secWhen"></legend>
+      <fieldset data-step="2">
+        <legend tabindex="-1" data-i18n="secWhen"></legend>
         <div class="field" data-f="days">
           <span class="lbl" data-i18n="days"></span>
-          <div class="choices" id="daysChoices" role="radiogroup"></div>
+          <div class="choices pills" id="daysChoices" role="radiogroup"></div>
           <p class="err" data-err></p>
         </div>
         <div class="field" data-f="hours">
           <span class="lbl" data-i18n="hours"></span>
-          <div class="choices" id="hoursChoices"></div>
+          <div class="choices pills" id="hoursChoices"></div>
           <p class="hint" data-i18n="hoursHint"></p>
           <p class="err" data-err></p>
         </div>
       </fieldset>
 
-      <fieldset>
-        <legend data-i18n="secCommit"></legend>
+      <fieldset data-step="3">
+        <legend tabindex="-1" data-i18n="secCommit"></legend>
         <div class="field" data-f="attend">
           <span class="lbl" data-i18n="attend"></span>
-          <div class="choices" id="attendChoices" role="radiogroup"></div>
+          <div class="choices pills" id="attendChoices" role="radiogroup"></div>
           <p class="err" data-err></p>
         </div>
         <div class="field" data-f="commit">
@@ -206,6 +255,8 @@ html{color-scheme:light}
 
       <div class="hp" aria-hidden="true"><label>Website <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></label></div>
       <div class="row">
+        <button type="button" class="btn ghost" id="backBtn" data-i18n="back"></button>
+        <button type="button" class="btn" id="nextBtn" data-i18n="next"></button>
         <button type="submit" class="btn" id="submitBtn" data-i18n="submit"></button>
         <span class="note" id="submitNote"></span>
       </div>
@@ -213,10 +264,12 @@ html{color-scheme:light}
   </section>
 
     <section id="doneView" class="card done" hidden>
+    <div class="dring"><svg viewBox="0 0 280 280" aria-hidden="true"><circle cx="140" cy="140" r="104" class="orbit"/><circle class="seat you" cx="140.0" cy="36.0" r="17"/><circle class="seat-ring" cx="140.0" cy="36.0" r="25"/><circle class="seat" style="--i:1" cx="192.0" cy="49.9" r="14"/><circle class="seat" style="--i:2" cx="230.1" cy="88.0" r="14"/><circle class="seat" style="--i:3" cx="244.0" cy="140.0" r="14"/><circle class="seat" style="--i:4" cx="230.1" cy="192.0" r="14"/><circle class="seat" style="--i:5" cx="192.0" cy="230.1" r="14"/><circle class="seat" style="--i:6" cx="140.0" cy="244.0" r="14"/><circle class="seat" style="--i:7" cx="88.0" cy="230.1" r="14"/><circle class="seat" style="--i:8" cx="49.9" cy="192.0" r="14"/><circle class="seat" style="--i:9" cx="36.0" cy="140.0" r="14"/><circle class="seat" style="--i:10" cx="49.9" cy="88.0" r="14"/><circle class="seat" style="--i:11" cx="88.0" cy="49.9" r="14"/></svg></div>
     <span class="status ok" id="doneStatus"></span>
     <h2 id="doneTitle"></h2>
     <p class="sub" id="doneText"></p>
-    <div class="row"><button type="button" class="btn ghost" id="editBtn"></button></div>
+    <div class="when" id="doneWhen"></div>
+    <div class="row" style="margin-top:16px"><button type="button" class="btn" id="calBtn"></button><button type="button" class="btn ghost" id="editBtn"></button></div>
   </section>
 </main>
 <script>
@@ -302,6 +355,12 @@ S.ar.okUpdated = "حدّثنا طلبك بالبيانات الجديدة."; S.e
 S.ar.received = "تم الاستلام"; S.en.received = "Received";
 S.ar.errSend = "تعذّر الإرسال. حاول مرة أخرى بعد قليل."; S.en.errSend = "Could not send. Please try again shortly.";
 S.ar.errMany = "محاولات كثيرة. حاول لاحقاً."; S.en.errMany = "Too many attempts. Please try later.";
+S.ar.back = "السابق"; S.en.back = "Back"; S.ar.next = "التالي"; S.en.next = "Next";
+S.ar.stepOf = "الخطوة {n} من {m}: "; S.en.stepOf = "Step {n} of {m}: ";
+S.ar.dateL = "أول جلسة"; S.en.dateL = "First session"; S.ar.placeL = "المكان"; S.en.placeL = "Place";
+S.ar.dateV = "السبت 5 كانون الأول 2026، الساعة 4:00 مساءً"; S.en.dateV = "Saturday 5 December 2026, 4:00 pm";
+S.ar.placeV = "Netaj، بغداد"; S.en.placeV = "Netaj, Baghdad";
+S.ar.cal = "أضف الموعد إلى التقويم"; S.en.cal = "Add to calendar";
 
 function buildChoices(boxId, name, labels, type) {
   var box = $(boxId); box.innerHTML = "";
@@ -335,11 +394,31 @@ var lastUpdated = false;
 function applyLang() {
   app.lang = lang; app.dir = lang === "ar" ? "rtl" : "ltr";
   document.querySelectorAll("[data-i18n]").forEach(function (el) { var v = t(el.getAttribute("data-i18n")); if (typeof v === "string") el.textContent = v; });
-  $("chips").innerHTML = ""; t("chips").forEach(function (c) { var li = document.createElement("li"); li.textContent = c; $("chips").appendChild(li); });
+  var wh = '<div class="jr"><b>' + t("dateL") + '</b><span>' + t("dateV") + '</span></div><div class="jr"><b>' + t("placeL") + '</b><span>' + t("placeV") + '</span></div>';
+  $("heroWhen").innerHTML = wh; $("doneWhen").innerHTML = wh; $("calBtn").textContent = t("cal");
   $("langBtn").textContent = t("langBtn");
-  fillLabels(); fillRole();
+  fillLabels(); fillRole(); showStep(cur);
   if (!$("doneView").hidden) renderDone(lastUpdated);
   document.querySelectorAll(".field.invalid").forEach(function (f) { f.classList.remove("invalid"); var e = f.querySelector("[data-err]"); if (e) e.textContent = ""; });
+}
+var cur = 0, LAST = 3;
+function stepOf(key) { var f = document.querySelector('.field[data-f="' + key + '"]'); var fs = f && f.closest("fieldset"); return fs ? Number(fs.getAttribute("data-step")) : 0; }
+function showStep(n) {
+  cur = n;
+  document.querySelectorAll("fieldset[data-step]").forEach(function (fs) { fs.hidden = Number(fs.getAttribute("data-step")) !== n; });
+  var bars = $("progBars"); bars.innerHTML = "";
+  for (var i = 0; i <= LAST; i++) { var li = document.createElement("li"); li.className = i < n ? "done" : (i === n ? "cur" : ""); bars.appendChild(li); }
+  var lg = document.querySelector('fieldset[data-step="' + n + '"] legend');
+  $("progLabel").textContent = t("stepOf").replace("{n}", n + 1).replace("{m}", LAST + 1) + (lg ? lg.textContent : "");
+  $("backBtn").hidden = n === 0; $("nextBtn").hidden = n === LAST; $("submitBtn").hidden = n !== LAST;
+}
+function goStep(n) { showStep(n); var lg = document.querySelector('fieldset[data-step="' + n + '"] legend'); if (lg) { lg.scrollIntoView({ block: "start" }); lg.focus({ preventScroll: true }); } }
+function addToCal() {
+  var stamp = new Date().toISOString().replace(/[-:]|\.\d{3}/g, "");
+  var ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//AI Learning Circle//EN", "BEGIN:VEVENT", "UID:ailc-20261205-first@faisalalyaseein.github.io", "DTSTAMP:" + stamp,
+    "DTSTART:20261205T130000Z", "DTEND:20261205T153000Z", "SUMMARY:AI Learning Circle: first session", "LOCATION:Netaj\\, Baghdad", "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+  var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" })); a.download = "AI-Learning-Circle.ics";
+  document.body.appendChild(a); a.click(); a.remove();
 }
 function checkedIdx(name) { return Array.prototype.map.call(document.querySelectorAll('input[name="' + name + '"]:checked'), function (i) { return Number(i.value); }); }
 function radioVal(name) { var r = document.querySelector('input[name="' + name + '"]:checked'); return r ? Number(r.value) : null; }
@@ -381,10 +460,21 @@ function showErrors(errs) {
 }
 $("regForm").addEventListener("submit", function (ev) {
   ev.preventDefault();
-  var r = readForm(), errs = validate(r);
+  var r = readForm(), all = validate(r), errs = {};
+  if (cur < LAST) {
+    Object.keys(all).forEach(function (k) { if (stepOf(k) === cur) errs[k] = 1; });
+    showErrors(errs); $("submitNote").textContent = Object.keys(errs).length ? t("errTop") : "";
+    if (!Object.keys(errs).length) goStep(cur + 1);
+    return;
+  }
+  errs = all;
   showErrors(errs);
   $("submitNote").textContent = Object.keys(errs).length ? t("errTop") : "";
-  if (Object.keys(errs).length) return;
+  if (Object.keys(errs).length) {
+    var firstStep = Math.min.apply(null, Object.keys(errs).map(stepOf));
+    if (firstStep !== cur) goStep(firstStep);
+    return;
+  }
   var btn = $("submitBtn"); btn.disabled = true; btn.textContent = t("sending");
   var body = Object.assign({}, r, { lang: lang, website: $("website").value });
   fetch(SUPABASE_URL + "/rest/v1/rpc/register", { method: "POST", headers: { "Content-Type": "application/json", "apikey": SUPABASE_KEY }, body: JSON.stringify({ d: body }) })
@@ -398,7 +488,10 @@ $("regForm").addEventListener("submit", function (ev) {
     })
     .catch(function () { btn.disabled = false; btn.textContent = t("submit"); $("submitNote").textContent = t("errSend"); });
 });
-$("editBtn").addEventListener("click", function () { $("doneView").hidden = true; $("formView").hidden = false; window.scrollTo(0, 0); });
+$("editBtn").addEventListener("click", function () { $("doneView").hidden = true; $("formView").hidden = false; goStep(0); window.scrollTo(0, 0); });
+$("nextBtn").addEventListener("click", function () { $("regForm").requestSubmit(); });
+$("backBtn").addEventListener("click", function () { if (cur > 0) goStep(cur - 1); });
+$("calBtn").addEventListener("click", addToCal);
 $("langBtn").addEventListener("click", function () { lang = lang === "ar" ? "en" : "ar"; applyLang(); });
 
 buildChoices("levelChoices", "level", S.ar.levels, "radio");
