@@ -28,10 +28,19 @@ section{padding:56px 0}.alt{background:var(--bg2)}.dark{background:var(--dark);c
 .btn{display:inline-block;background:var(--gold);color:var(--btnink);font-weight:700;text-decoration:none;border-radius:12px;padding:13px 26px;border:2px solid var(--gold)}
 .btn.ghost{background:transparent;color:inherit;border-color:var(--line)}.btn.sm{padding:8px 16px;font-size:14px;border-radius:10px}
 .dark .btn.ghost{border-color:#5b5440}
-.hero{padding:64px 0 56px;background:var(--dark);color:var(--dink)}
-.eye{font-size:12px;font-weight:600;letter-spacing:1.4px;color:var(--gold);margin-bottom:14px}
-html[lang="ar"] .eye{letter-spacing:0;font-size:14px}
-h1{font-size:clamp(30px,6vw,52px);line-height:1.15;font-weight:700;margin-bottom:16px}
+.hero{padding:72px 0 0;background:var(--dark);color:var(--dink)}
+.hero-g{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:12px 40px;align-items:center}
+.hx{min-width:0}.ringw{display:flex;justify-content:center}.ring{width:100%;max-width:300px;height:auto;overflow:visible}
+.orbit{fill:none;stroke:#3d3826;stroke-width:1.5;stroke-dasharray:2 7}
+.seat{fill:rgba(210,179,86,.16);stroke:var(--gold);stroke-width:1.5}.seat.you{fill:var(--gold)}.seat-ring{fill:none;stroke:var(--blue);stroke-width:2}
+.rn{font:700 30px Poppins,'Noto Kufi Arabic',sans-serif;fill:var(--dink)}.rl{font:500 14px Poppins,'Noto Kufi Arabic',sans-serif;fill:#cfc9b6}
+@media (prefers-reduced-motion:no-preference){.seat{opacity:0;animation:seat .5s ease-out forwards;animation-delay:calc(var(--i)*70ms + 200ms)}@keyframes seat{from{opacity:0;transform:scale(.4);transform-box:fill-box;transform-origin:center}to{opacity:1;transform:scale(1);transform-box:fill-box;transform-origin:center}}}
+.hero .when{margin:6px 0 24px;max-width:520px}.hero .jr{border-color:#3d3826}
+.facts{grid-column:1/-1;display:flex;flex-wrap:wrap;margin-top:44px;border-top:1px solid #3d3826}
+.facts>div{flex:1 1 150px;padding:16px 18px 18px 0;padding-inline:0 18px}.facts>div+div{border-inline-start:1px solid #3d3826;padding-inline-start:18px}
+.facts dt{font-weight:700;font-size:20px;color:var(--gold)}.facts dd{font-size:14px;color:#cfc9b6}
+.eye{font-size:15px;font-weight:500;color:var(--gold);margin-bottom:14px}
+h1{font-size:clamp(30px,5.4vw,50px);line-height:1.18;font-weight:700;margin-bottom:16px;text-wrap:balance}
 h1 .brand{display:block;color:var(--gold);font-size:.62em;margin-bottom:8px}
 .lead{max-width:62ch;font-size:18px;color:#e6e1d0;margin-bottom:14px}
 .dark .lead{color:#e6e1d0}
@@ -44,37 +53,38 @@ h1 .brand{display:block;color:var(--gold);font-size:.62em;margin-bottom:8px}
 .stat{border:1px solid #3d3826;border-radius:14px;padding:14px 16px;background:#1a1914}
 .stat b{display:block;font-size:22px;color:var(--gold);line-height:1.3}.stat span{font-size:13px;color:#cfc9b6}
 h2{font-size:clamp(24px,4vw,34px);line-height:1.25;margin-bottom:22px}
-.h3{font-size:14px;font-weight:700;color:var(--dgold);margin:34px 0 14px;text-transform:uppercase;letter-spacing:.8px}
-html[lang="ar"] .h3{text-transform:none;letter-spacing:0;font-size:17px}
+.h3{font-size:19px;font-weight:700;color:var(--ink);margin:44px 0 16px}
 .dark .h3{color:var(--gold)}
 .bul{list-style:none;display:grid;gap:12px;margin-bottom:22px}
 .bul li{display:flex;gap:12px;align-items:flex-start}
 .bul .ic,.ic{width:1.2em;height:1.2em;flex:none}.bul .ic{color:var(--dgold);margin-top:5px;width:22px;height:22px}
 .ic svg{width:100%;height:100%}
-.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:var(--bg2);border:1px solid var(--line);border-radius:30px;padding:5px 14px;font-size:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:5px 12px;font-size:14px}
 .grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
-.card .ic{width:28px;height:28px;color:var(--dgold);margin-bottom:10px;display:block}
-.card h3{font-size:17px;margin-bottom:6px;line-height:1.4}.card p{color:var(--mute);font-size:15px}
-.when{font-weight:600;color:var(--dgold);font-size:14px;margin-bottom:6px}
-.sbar{display:flex;height:44px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+.gain{display:flex;gap:14px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--line)}.gain .ic{width:26px;height:26px;color:var(--dgold);margin-top:3px}
+.gain h3{font-size:17px;line-height:1.4;margin-bottom:4px}.gain p{color:var(--mute);font-size:15px}
+.tl{list-style:none;position:relative;display:grid;gap:26px;padding-inline-start:0}
+.tl .ph{display:flex;gap:18px;position:relative}.tl .ph:not(:last-child)::before{content:"";position:absolute;inset-inline-start:21px;top:46px;bottom:-24px;width:2px;background:var(--line)}
+.tl .dot{width:44px;height:44px;border-radius:50%;background:var(--dark);color:var(--gold);display:flex;align-items:center;justify-content:center;flex:none}.tl .dot .ic{width:22px;height:22px}
+.tl h3{font-size:18px;line-height:1.4}.tl p{color:var(--mute);font-size:15px;max-width:58ch}
+.tl .when,.ph .when{font-weight:600;color:var(--dgold);font-size:14px;margin:2px 0 6px}
+.qas{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0 36px}.qa{padding:16px 0;border-top:1px solid var(--line)}.qa h3{font-size:16px;margin-bottom:4px;line-height:1.5}.qa p{color:var(--mute);font-size:15px}
+.sbar{display:flex;height:44px;border-radius:6px;overflow:hidden;border:1px solid var(--line)}
 .seg{display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;min-width:0}
 .s{background:var(--line);color:var(--ink)}.g{background:var(--gold);color:#111}.b{background:var(--blue);color:#111}.k{background:#111;color:var(--gold)}
 .seg{border-inline-end:2px solid var(--bg)}.seg:last-child{border:0}
 .slist{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px 16px;margin-top:14px;font-size:14px}
 .slist li{display:flex;gap:8px;align-items:flex-start}.sw{width:12px;height:12px;border-radius:50%;flex:none;margin-top:7px}
 .slist small{color:var(--mute)}
-.wk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:2px}
+.wk{border-top:3px solid var(--gold);padding:12px 4px 4px;display:flex;flex-direction:column;gap:2px}
 .wk small{color:var(--dgold);font-weight:700}.wk b{font-size:16px}.wk span{color:var(--mute);font-size:14px}
 .out{margin-top:22px;padding:18px 20px;border-radius:14px;background:var(--dark);color:var(--dink);border-inline-start:5px solid var(--gold)}
 .asks{list-style:none;display:grid;gap:14px;margin-bottom:6px}
-.asks li{display:flex;gap:14px;align-items:flex-start}
-.asks .n{width:34px;height:34px;border-radius:50%;background:var(--dark);color:var(--gold);display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.asks li{display:flex;gap:14px;align-items:flex-start}.asks .ic{color:var(--dgold);width:22px;height:22px;margin-top:4px}
 .asks b{display:block}.asks span{color:var(--mute)}
 .joinbox{display:grid;gap:12px;margin-bottom:22px;max-width:560px}
 .jr{display:flex;align-items:center;gap:12px;border-bottom:1px solid #3d3826;padding-bottom:10px}
 .jr .ic{color:var(--gold);width:22px;height:22px}.jr b{min-width:110px}
-.soon{color:var(--gold);border:1px dashed #8a7a3a;border-radius:8px;padding:2px 10px;font-size:14px}
 .share{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px}
 .share>span{color:#cfc9b6;font-size:14px}
 .chipbtn{display:inline-flex;align-items:center;gap:8px;border:1px solid #5b5440;background:transparent;color:var(--dink);border-radius:30px;padding:7px 14px;font:inherit;font-size:14px;cursor:pointer;text-decoration:none}
@@ -83,6 +93,7 @@ html[lang="ar"] .h3{text-transform:none;letter-spacing:0;font-size:17px}
 footer{background:var(--dark);color:#b9b39f;font-size:13px;padding:0 0 28px}footer .wrap{border-top:1px solid #3d3826;padding-top:18px}
 .fab{position:fixed;inset-inline:16px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;display:none}
 .fab .btn{display:block;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+@media (max-width:760px){.hero-g{grid-template-columns:minmax(0,1fr)}.ringw{order:-1}.ring{max-width:220px}.facts{display:grid;grid-template-columns:1fr 1fr;margin-top:32px}.facts>div{padding:14px 0 14px 0}.facts>div+div{border-inline-start:0;padding-inline-start:0}}
 @media (max-width:640px){.fab{display:block}section{padding:44px 0}.hero{padding:44px 0}body{padding-bottom:84px}.bar .btn.sm{display:none}}
 a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
 .toast{position:fixed;inset-inline-start:50%;transform:translateX(-50%);bottom:90px;background:#111;color:var(--gold);padding:10px 16px;border-radius:10px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:40}
@@ -91,10 +102,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 <header class="bar"><div class="wrap"><span class="logo">AI Learning <i>Circle</i></span><span class="sp"></span>
 <button class="lang" id="langBtn" type="button">English</button><a class="btn sm" id="barBtn" href="register/">سجّل الآن</a></div></header>
 <main><div class="L" data-l="ar">
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="wrap hero-g"><div class="hx">
 <p class="eye">دعوة للمهنيين والأكاديميين</p><h1><span class="brand">AI Learning Circle</span>لا تتعلّم الذكاء الاصطناعي وحدك</h1>
-<p class="lead">انضم إلى دائرة صغيرة من 10 إلى 15 مهنياً وأكاديمياً يبنون مهارات الذكاء الاصطناعي والمهارات الناعمة معاً، بالتطبيق والعرض (Pitching) والملاحظات الصريحة.</p><p class="steps">تعلّم  ·  تأمّل  ·  ناقش  ·  طبّق  ·  شارك  ·  تطوّر</p>
-<div class="badges"><span class="badge"><span class="ic" aria-hidden="true"><svg
+<p class="lead">انضم إلى دائرة صغيرة من 10 إلى 15 مهنياً وأكاديمياً يبنون مهارات الذكاء الاصطناعي والمهارات الناعمة معاً، بالتطبيق والعرض (Pitching) والملاحظات الصريحة.</p>
+<div class="when"><div class="jr"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -106,11 +117,17 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-  <circle cx="9" cy="7" r="4" />
-  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-</svg></span>مقاعد محدودة</span><span class="badge"><span class="ic" aria-hidden="true"><svg
+  <path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="M8 14h.01" />
+  <path d="M12 14h.01" />
+  <path d="M16 14h.01" />
+  <path d="M8 18h.01" />
+  <path d="M12 18h.01" />
+  <path d="M16 18h.01" />
+</svg></span><b>أول جلسة</b><span>السبت 5 كانون الأول 2026، الساعة 4:00 مساءً</span></div><div class="jr"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -124,25 +141,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 >
   <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
   <circle cx="12" cy="10" r="3" />
-</svg></span>بغداد، وجهاً لوجه</span><span class="badge"><span class="ic" aria-hidden="true"><svg
- 
-  xmlns="http://www.w3.org/2000/svg"
- 
- 
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-  <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-</svg></span>السبت 5 كانون الأول 2026، 4 م</span></div>
-<div class="cta"><a class="btn" href="register/">سجّل الآن</a><a class="btn ghost" href="#how-ar">شاهد كيف تعمل</a></div>
-<div class="stats"><div class="stat"><b>10 إلى 15</b><span>عضواً</span></div><div class="stat"><b>150 دقيقة</b><span>كل أسبوعين</span></div><div class="stat"><b>8 أسابيع</b><span>المرحلة الأولى</span></div><div class="stat"><b>بغداد</b><span>وجهاً لوجه</span></div></div></div></section>
+</svg></span><b>المكان</b><span>Netaj، بغداد</span></div></div>
+<div class="cta"><a class="btn" href="register/">سجّل الآن</a><a class="btn ghost" href="#how-ar">شاهد كيف تعمل</a></div></div>
+<div class="ringw"><svg class="ring" viewBox="0 0 280 280" role="img" aria-label="10 إلى 15 عضواً"><circle cx="140" cy="140" r="104" class="orbit"/><circle class="seat you" cx="140.0" cy="36.0" r="15" style="--i:0"/><circle class="seat-ring" cx="140.0" cy="36.0" r="22"/><circle class="seat" cx="192.0" cy="49.9" r="13" style="--i:1"/><circle class="seat" cx="230.1" cy="88.0" r="13" style="--i:2"/><circle class="seat" cx="244.0" cy="140.0" r="13" style="--i:3"/><circle class="seat" cx="230.1" cy="192.0" r="13" style="--i:4"/><circle class="seat" cx="192.0" cy="230.1" r="13" style="--i:5"/><circle class="seat" cx="140.0" cy="244.0" r="13" style="--i:6"/><circle class="seat" cx="88.0" cy="230.1" r="13" style="--i:7"/><circle class="seat" cx="49.9" cy="192.0" r="13" style="--i:8"/><circle class="seat" cx="36.0" cy="140.0" r="13" style="--i:9"/><circle class="seat" cx="49.9" cy="88.0" r="13" style="--i:10"/><circle class="seat" cx="88.0" cy="49.9" r="13" style="--i:11"/><text x="140" y="140" class="rn" text-anchor="middle">10 إلى 15</text><text x="140" y="168" class="rl" text-anchor="middle">عضواً</text></svg></div>
+<dl class="facts"><div><dt>10 إلى 15</dt><dd>عضواً</dd></div><div><dt>150 دقيقة</dt><dd>كل أسبوعين</dd></div><div><dt>8 أسابيع</dt><dd>المرحلة الأولى</dd></div><div><dt>بغداد</dt><dd>وجهاً لوجه</dd></div></dl></div></section>
 <section id="for-ar"><div class="wrap"><h2>هل هذه الدائرة لك؟</h2><ul class="bul"><li><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +198,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 >
   <path d="M20 6 9 17l-5-5" />
 </svg></span><span>لست مبرمجاً؟ لا مشكلة. هذه الدائرة لك أيضاً.</span></li></ul><div class="chips"><span class="chip">رواد أعمال</span><span class="chip">مهندسون</span><span class="chip">مديرون</span><span class="chip">باحثون</span><span class="chip">أكاديميون</span><span class="chip">القطاع العام</span><span class="chip">القطاع الخاص</span></div>
-<h3 class="h3">ماذا ستكسب</h3><div class="grid g2"><div class="card"><span class="ic" aria-hidden="true"><svg
+<h3 class="h3">ماذا ستكسب</h3><div class="grid g2"><div class="gain"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -211,7 +213,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
   <path d="M22 10v6" />
   <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
-</svg></span><h3>مهارات الذكاء الاصطناعي</h3><p>نتابع مسارات تعلّم قائمة من عدة جهات ونستهدف شهادات إتمام Anthropic Academy، مع مجموعة تساعدك على الاستمرار.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+</svg></span><div><h3>مهارات الذكاء الاصطناعي</h3><p>نتابع مسارات تعلّم قائمة من عدة جهات ونستهدف شهادات إتمام Anthropic Academy، مع مجموعة تساعدك على الاستمرار.</p></div></div><div class="gain"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -225,7 +227,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 >
   <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z" />
   <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
-</svg></span><h3>مهارات ناعمة</h3><p>العرض (Pitching) والتواصل والتفكير النقدي والتكيّف والقيادة، نتدرب عليها في كل جلسة.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+</svg></span><div><h3>مهارات ناعمة</h3><p>العرض (Pitching) والتواصل والتفكير النقدي والتكيّف والقيادة، نتدرب عليها في كل جلسة.</p></div></div><div class="gain"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -240,7 +242,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <path d="M2 3h20" />
   <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
   <path d="m7 21 5-5 5 5" />
-</svg></span><h3>التعلّم بالممارسة</h3><p>طبّق ما تعلمته، واعرضه، واحصل على ملاحظات صريحة من المجموعة.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+</svg></span><div><h3>التعلّم بالممارسة</h3><p>طبّق ما تعلمته، واعرضه، واحصل على ملاحظات صريحة من المجموعة.</p></div></div><div class="gain"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -257,8 +259,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <path d="m21 3 1 11h-2" />
   <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
   <path d="M3 4h8" />
-</svg></span><h3>شبكة علاقات حقيقية</h3><p>تلتقي مهندسين ومديرين ورواد أعمال وأكاديميين من قطاعات مختلفة.</p></div></div></div></section>
-<section id="how-ar" class="alt"><div class="wrap"><h2>كيف تعمل الدائرة؟</h2><div class="grid g3"><div class="card ph"><span class="ic" aria-hidden="true"><svg
+</svg></span><div><h3>شبكة علاقات حقيقية</h3><p>تلتقي مهندسين ومديرين ورواد أعمال وأكاديميين من قطاعات مختلفة.</p></div></div></div></div></section>
+<section id="how-ar" class="alt"><div class="wrap"><h2>كيف تعمل الدائرة؟</h2><ol class="tl"><li class="ph"><span class="dot"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -272,7 +274,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 >
   <path d="M12 7v14" />
   <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
-</svg></span><h3>قبل الجلسة: في بيتك</h3><div class="when">60 إلى 90 دقيقة</div><p>ادرس من مسار التعلّم الذي اخترته واقرأ مقالاً قصيراً واحداً.</p></div><div class="card ph"><span class="ic" aria-hidden="true"><svg
+</svg></span></span><div><h3>قبل الجلسة: في بيتك</h3><div class="when">60 إلى 90 دقيقة</div><p>ادرس من مسار التعلّم الذي اخترته واقرأ مقالاً قصيراً واحداً.</p></div></li><li class="ph"><span class="dot"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -288,7 +290,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <circle cx="9" cy="7" r="4" />
   <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
   <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-</svg></span><h3>في الجلسة: معاً</h3><div class="when">150 دقيقة كل أسبوعين</div><p>اختبار سريع، عروض وتجارب، استراحة قهوة، ورشة مهارات ناعمة، وأخبار الذكاء الاصطناعي.</p></div><div class="card ph"><span class="ic" aria-hidden="true"><svg
+</svg></span></span><div><h3>في الجلسة: معاً</h3><div class="when">150 دقيقة كل أسبوعين</div><p>اختبار سريع، عروض وتجارب، استراحة قهوة، ورشة مهارات ناعمة، وأخبار الذكاء الاصطناعي.</p></div></li><li class="ph"><span class="dot"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -304,11 +306,76 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
   <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
   <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-</svg></span><h3>بعد الجلسة: في الواقع</h3><div class="when">إجراء واحد</div><p>جرّب شيئاً واحداً في عملك وعد لتخبر المجموعة.</p></div></div>
+</svg></span></span><div><h3>بعد الجلسة: في الواقع</h3><div class="when">إجراء واحد</div><p>جرّب شيئاً واحداً في عملك وعد لتخبر المجموعة.</p></div></li></ol>
 <h3 class="h3">داخل الجلسة (150 دقيقة)</h3><div class="sbar"><div class="seg s" style="flex:10" title="استقبال ومراجعة (10)"><span>10</span></div><div class="seg g" style="flex:15" title="اختبار سريع (15)"><span>15</span></div><div class="seg g" style="flex:10" title="نقاش (10)"><span>10</span></div><div class="seg b" style="flex:25" title="عروض وتجارب (25)"><span>25</span></div><div class="seg s" style="flex:15" title="استراحة قهوة (15)"><span>15</span></div><div class="seg k" style="flex:50" title="ورشة مهارات ناعمة (50)"><span>50</span></div><div class="seg s" style="flex:5" title="أخبار الذكاء الاصطناعي (5)"><span>5</span></div><div class="seg s" style="flex:15" title="نقاش مفتوح وخطوات قادمة (15)"><span>15</span></div></div><ul class="slist"><li><i class="sw s"></i><span>استقبال ومراجعة <small>10</small></span></li><li><i class="sw g"></i><span>اختبار سريع <small>15</small></span></li><li><i class="sw g"></i><span>نقاش <small>10</small></span></li><li><i class="sw b"></i><span>عروض وتجارب <small>25</small></span></li><li><i class="sw s"></i><span>استراحة قهوة <small>15</small></span></li><li><i class="sw k"></i><span>ورشة مهارات ناعمة <small>50</small></span></li><li><i class="sw s"></i><span>أخبار الذكاء الاصطناعي <small>5</small></span></li><li><i class="sw s"></i><span>نقاش مفتوح وخطوات قادمة <small>15</small></span></li></ul>
 <h3 class="h3">أول 8 أسابيع</h3><div class="grid g4"><div class="wk"><small>الأسبوع 2</small><b>الجلسة 1</b><span>التكيّف وعقلية النمو</span></div><div class="wk"><small>الأسبوع 4</small><b>الجلسة 2</b><span>حل المشكلات بشكل منظم</span></div><div class="wk"><small>الأسبوع 6</small><b>الجلسة 3</b><span>التواصل والعرض (Pitching)</span></div><div class="wk"><small>الأسبوع 8</small><b>الجلسة 4</b><span>القيادة ومستقبل العمل</span></div></div><p class="out">بنهاية الأسبوع 8: شهادات Anthropic Academy (هدفنا)، عرض (Pitch) قدّمته، تجربة ذكاء اصطناعي حقيقية طبّقتها، وشبكة علاقات تبقى.</p></div></section>
-<section><div class="wrap"><h2>ماذا نطلب منك؟</h2><ol class="asks"><li><span class="n">1</span><div><b>احضر</b><span>أربع جلسات خلال ثمانية أسابيع، كل أسبوعين جلسة.</span></div></li><li><span class="n">2</span><div><b>أنجز الواجب</b><span>60 إلى 90 دقيقة قبل كل جلسة.</span></div></li><li><span class="n">3</span><div><b>شارك</b><span>اسأل وناقش وقدّم عندما يحين دورك.</span></div></li><li><span class="n">4</span><div><b>حافظ على الثقة</b><span>ما يُقال في الدائرة يبقى فيها. لا بيانات عملاء أو جهة عملك في أدوات الذكاء الاصطناعي.</span></div></li><li><span class="n">5</span><div><b>قيّم</b><span>ثلاثة أسئلة سريعة بعد كل جلسة.</span></div></li></ol>
-<h3 class="h3">معلومات مفيدة</h3><div class="grid g3"><div class="card"><h3>هل أحتاج برمجة؟</h3><p>لا. لكل موضوع تقني مسار بلا برمجة.</p></div><div class="card"><h3>بماذا نتعلّم؟</h3><p>بمسارات تعلّم قائمة من عدة جهات، مع ورش تطبيق وملاحظات من الأقران.</p></div><div class="card"><h3>ماذا أحتاج؟</h3><p>حاسوب أو هاتف وفضول. نساعدك في الإعداد.</p></div></div></div></section>
+<section><div class="wrap"><h2>ماذا نطلب منك؟</h2><ul class="asks"><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>احضر</b><span>أربع جلسات خلال ثمانية أسابيع، كل أسبوعين جلسة.</span></div></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>أنجز الواجب</b><span>60 إلى 90 دقيقة قبل كل جلسة.</span></div></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>شارك</b><span>اسأل وناقش وقدّم عندما يحين دورك.</span></div></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>حافظ على الثقة</b><span>ما يُقال في الدائرة يبقى فيها. لا بيانات عملاء أو جهة عملك في أدوات الذكاء الاصطناعي.</span></div></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>قيّم</b><span>ثلاثة أسئلة سريعة بعد كل جلسة.</span></div></li></ul>
+<h3 class="h3">معلومات مفيدة</h3><div class="qas"><div class="qa"><h3>هل أحتاج برمجة؟</h3><p>لا. لكل موضوع تقني مسار بلا برمجة.</p></div><div class="qa"><h3>بماذا نتعلّم؟</h3><p>بمسارات تعلّم قائمة من عدة جهات، مع ورش تطبيق وملاحظات من الأقران.</p></div><div class="qa"><h3>ماذا أحتاج؟</h3><p>حاسوب أو هاتف وفضول. نساعدك في الإعداد.</p></div></div></div></section>
 <section id="join-ar" class="dark"><div class="wrap"><h2>انضم إلى الدائرة الأولى</h2><div class="joinbox"><div class="jr"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
@@ -385,10 +452,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 <a class="chipbtn" target="_blank" rel="noopener" data-wa="أرسل على واتساب" href="#">أرسل على واتساب</a></div>
 <p class="note">محتوى الكورسات وشهاداتها تخص الجهات التي تصدرها (مثل Anthropic Academy). والدائرة تضيف التطبيق والملاحظات والمجتمع.</p></div></section>
 <footer><div class="wrap">AI Learning Circle، بغداد</div></footer></div><div class="L" data-l="en">
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="wrap hero-g"><div class="hx">
 <p class="eye">AN INVITATION TO PROFESSIONALS AND ACADEMICS</p><h1><span class="brand">AI Learning Circle</span>Don't learn AI alone.</h1>
-<p class="lead">Join a small circle of 10 to 15 professionals and academics who build AI skills and soft skills together, through practice, pitching and honest feedback.</p><p class="steps">Learn  ·  Reflect  ·  Discuss  ·  Apply  ·  Share  ·  Grow</p>
-<div class="badges"><span class="badge"><span class="ic" aria-hidden="true"><svg
+<p class="lead">Join a small circle of 10 to 15 professionals and academics who build AI skills and soft skills together, through practice, pitching and honest feedback.</p>
+<div class="when"><div class="jr"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -400,11 +467,17 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   stroke-linecap="round"
   stroke-linejoin="round"
 >
-  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-  <circle cx="9" cy="7" r="4" />
-  <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-</svg></span>Limited seats</span><span class="badge"><span class="ic" aria-hidden="true"><svg
+  <path d="M8 2v4" />
+  <path d="M16 2v4" />
+  <rect x="3" y="4" rx="2" />
+  <path d="M3 10h18" />
+  <path d="M8 14h.01" />
+  <path d="M12 14h.01" />
+  <path d="M16 14h.01" />
+  <path d="M8 18h.01" />
+  <path d="M12 18h.01" />
+  <path d="M16 18h.01" />
+</svg></span><b>First session</b><span>Saturday 5 December 2026, 4:00 pm</span></div><div class="jr"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -418,25 +491,10 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 >
   <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
   <circle cx="12" cy="10" r="3" />
-</svg></span>Baghdad, face to face</span><span class="badge"><span class="ic" aria-hidden="true"><svg
- 
-  xmlns="http://www.w3.org/2000/svg"
- 
- 
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-  <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-  <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-  <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-</svg></span>Sat 5 Dec 2026, 4 pm</span></div>
-<div class="cta"><a class="btn" href="register/">Register now</a><a class="btn ghost" href="#how-en">See how it works</a></div>
-<div class="stats"><div class="stat"><b>10 to 15</b><span>members</span></div><div class="stat"><b>150 min</b><span>every two weeks</span></div><div class="stat"><b>8 weeks</b><span>first phase</span></div><div class="stat"><b>Baghdad</b><span>face to face</span></div></div></div></section>
+</svg></span><b>Place</b><span>Netaj, Baghdad</span></div></div>
+<div class="cta"><a class="btn" href="register/">Register now</a><a class="btn ghost" href="#how-en">See how it works</a></div></div>
+<div class="ringw"><svg class="ring" viewBox="0 0 280 280" role="img" aria-label="10 to 15 members"><circle cx="140" cy="140" r="104" class="orbit"/><circle class="seat you" cx="140.0" cy="36.0" r="15" style="--i:0"/><circle class="seat-ring" cx="140.0" cy="36.0" r="22"/><circle class="seat" cx="192.0" cy="49.9" r="13" style="--i:1"/><circle class="seat" cx="230.1" cy="88.0" r="13" style="--i:2"/><circle class="seat" cx="244.0" cy="140.0" r="13" style="--i:3"/><circle class="seat" cx="230.1" cy="192.0" r="13" style="--i:4"/><circle class="seat" cx="192.0" cy="230.1" r="13" style="--i:5"/><circle class="seat" cx="140.0" cy="244.0" r="13" style="--i:6"/><circle class="seat" cx="88.0" cy="230.1" r="13" style="--i:7"/><circle class="seat" cx="49.9" cy="192.0" r="13" style="--i:8"/><circle class="seat" cx="36.0" cy="140.0" r="13" style="--i:9"/><circle class="seat" cx="49.9" cy="88.0" r="13" style="--i:10"/><circle class="seat" cx="88.0" cy="49.9" r="13" style="--i:11"/><text x="140" y="140" class="rn" text-anchor="middle">10 to 15</text><text x="140" y="168" class="rl" text-anchor="middle">members</text></svg></div>
+<dl class="facts"><div><dt>10 to 15</dt><dd>members</dd></div><div><dt>150 min</dt><dd>every two weeks</dd></div><div><dt>8 weeks</dt><dd>first phase</dd></div><div><dt>Baghdad</dt><dd>face to face</dd></div></dl></div></section>
 <section id="for-en"><div class="wrap"><h2>Is this circle for you?</h2><ul class="bul"><li><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
@@ -490,7 +548,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 >
   <path d="M20 6 9 17l-5-5" />
 </svg></span><span>Not a programmer? That is fine. This circle is for you too.</span></li></ul><div class="chips"><span class="chip">Entrepreneurs</span><span class="chip">Engineers</span><span class="chip">Managers</span><span class="chip">Researchers</span><span class="chip">Academics</span><span class="chip">Public sector</span><span class="chip">Private sector</span></div>
-<h3 class="h3">What you gain</h3><div class="grid g2"><div class="card"><span class="ic" aria-hidden="true"><svg
+<h3 class="h3">What you gain</h3><div class="grid g2"><div class="gain"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -505,7 +563,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
   <path d="M22 10v6" />
   <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
-</svg></span><h3>Practical AI skills</h3><p>Follow existing learning paths from several providers and aim for Anthropic Academy certificates of completion, with a group that keeps you on track.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+</svg></span><div><h3>Practical AI skills</h3><p>Follow existing learning paths from several providers and aim for Anthropic Academy certificates of completion, with a group that keeps you on track.</p></div></div><div class="gain"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -519,7 +577,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 >
   <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2z" />
   <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
-</svg></span><h3>Soft skills</h3><p>Pitching, communication, critical thinking, adaptability and leadership, practised in every session.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+</svg></span><div><h3>Soft skills</h3><p>Pitching, communication, critical thinking, adaptability and leadership, practised in every session.</p></div></div><div class="gain"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -534,7 +592,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <path d="M2 3h20" />
   <path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" />
   <path d="m7 21 5-5 5 5" />
-</svg></span><h3>Learning by practice</h3><p>Apply what you learned, present it, and get honest feedback from the group.</p></div><div class="card"><span class="ic" aria-hidden="true"><svg
+</svg></span><div><h3>Learning by practice</h3><p>Apply what you learned, present it, and get honest feedback from the group.</p></div></div><div class="gain"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -551,8 +609,8 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <path d="m21 3 1 11h-2" />
   <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
   <path d="M3 4h8" />
-</svg></span><h3>A real network</h3><p>Meet engineers, managers, founders and academics from different sectors.</p></div></div></div></section>
-<section id="how-en" class="alt"><div class="wrap"><h2>How the circle works</h2><div class="grid g3"><div class="card ph"><span class="ic" aria-hidden="true"><svg
+</svg></span><div><h3>A real network</h3><p>Meet engineers, managers, founders and academics from different sectors.</p></div></div></div></div></section>
+<section id="how-en" class="alt"><div class="wrap"><h2>How the circle works</h2><ol class="tl"><li class="ph"><span class="dot"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -566,7 +624,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
 >
   <path d="M12 7v14" />
   <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
-</svg></span><h3>Before: at home</h3><div class="when">60 to 90 minutes</div><p>Study from your learning path and read one short article.</p></div><div class="card ph"><span class="ic" aria-hidden="true"><svg
+</svg></span></span><div><h3>Before: at home</h3><div class="when">60 to 90 minutes</div><p>Study from your learning path and read one short article.</p></div></li><li class="ph"><span class="dot"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -582,7 +640,7 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <circle cx="9" cy="7" r="4" />
   <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
   <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-</svg></span><h3>During: together</h3><div class="when">150 minutes, every two weeks</div><p>A quick quiz, pitches and demos, a coffee break, a soft skills workshop, and AI news.</p></div><div class="card ph"><span class="ic" aria-hidden="true"><svg
+</svg></span></span><div><h3>During: together</h3><div class="when">150 minutes, every two weeks</div><p>A quick quiz, pitches and demos, a coffee break, a soft skills workshop, and AI news.</p></div></li><li class="ph"><span class="dot"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
  
@@ -598,11 +656,76 @@ a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offse
   <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
   <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
   <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-</svg></span><h3>After: in real life</h3><div class="when">One action</div><p>Try one thing at work and report back to the group.</p></div></div>
+</svg></span></span><div><h3>After: in real life</h3><div class="when">One action</div><p>Try one thing at work and report back to the group.</p></div></li></ol>
 <h3 class="h3">Inside a session (150 minutes)</h3><div class="sbar"><div class="seg s" style="flex:10" title="Check-in (10)"><span>10</span></div><div class="seg g" style="flex:15" title="Quick quiz (15)"><span>15</span></div><div class="seg g" style="flex:10" title="Discussion (10)"><span>10</span></div><div class="seg b" style="flex:25" title="Pitches and demos (25)"><span>25</span></div><div class="seg s" style="flex:15" title="Coffee break (15)"><span>15</span></div><div class="seg k" style="flex:50" title="Soft skills workshop (50)"><span>50</span></div><div class="seg s" style="flex:5" title="AI news (5)"><span>5</span></div><div class="seg s" style="flex:15" title="Open talk, next steps (15)"><span>15</span></div></div><ul class="slist"><li><i class="sw s"></i><span>Check-in <small>10</small></span></li><li><i class="sw g"></i><span>Quick quiz <small>15</small></span></li><li><i class="sw g"></i><span>Discussion <small>10</small></span></li><li><i class="sw b"></i><span>Pitches and demos <small>25</small></span></li><li><i class="sw s"></i><span>Coffee break <small>15</small></span></li><li><i class="sw k"></i><span>Soft skills workshop <small>50</small></span></li><li><i class="sw s"></i><span>AI news <small>5</small></span></li><li><i class="sw s"></i><span>Open talk, next steps <small>15</small></span></li></ul>
 <h3 class="h3">Your first 8 weeks</h3><div class="grid g4"><div class="wk"><small>Week 2</small><b>Session 1</b><span>Adaptability and growth mindset</span></div><div class="wk"><small>Week 4</small><b>Session 2</b><span>Structured problem-solving</span></div><div class="wk"><small>Week 6</small><b>Session 3</b><span>Communication and pitching</span></div><div class="wk"><small>Week 8</small><b>Session 4</b><span>Leadership and future of work</span></div></div><p class="out">By week 8: Anthropic Academy certificates (our target), a pitch you delivered, a real AI use case you tried, and a network that lasts.</p></div></section>
-<section><div class="wrap"><h2>What we ask of you</h2><ol class="asks"><li><span class="n">1</span><div><b>Show up</b><span>Four sessions in eight weeks, one every two weeks.</span></div></li><li><span class="n">2</span><div><b>Do the homework</b><span>60 to 90 minutes before each session.</span></div></li><li><span class="n">3</span><div><b>Take part</b><span>Ask, discuss, and present when your turn comes.</span></div></li><li><span class="n">4</span><div><b>Keep trust</b><span>What is said in the circle stays there. No client or employer data in AI tools.</span></div></li><li><span class="n">5</span><div><b>Give feedback</b><span>Three quick questions after every session.</span></div></li></ol>
-<h3 class="h3">Good to know</h3><div class="grid g3"><div class="card"><h3>Do I need to code?</h3><p>No. Every technical topic has a no-code path.</p></div><div class="card"><h3>What do we learn from?</h3><p>Existing learning paths from several providers, plus practice workshops and peer feedback.</p></div><div class="card"><h3>What do I need?</h3><p>A laptop or phone, and curiosity. We help you set up.</p></div></div></div></section>
+<section><div class="wrap"><h2>What we ask of you</h2><ul class="asks"><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>Show up</b><span>Four sessions in eight weeks, one every two weeks.</span></div></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>Do the homework</b><span>60 to 90 minutes before each session.</span></div></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>Take part</b><span>Ask, discuss, and present when your turn comes.</span></div></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>Keep trust</b><span>What is said in the circle stays there. No client or employer data in AI tools.</span></div></li><li><span class="ic" aria-hidden="true"><svg
+ 
+  xmlns="http://www.w3.org/2000/svg"
+ 
+ 
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20 6 9 17l-5-5" />
+</svg></span><div><b>Give feedback</b><span>Three quick questions after every session.</span></div></li></ul>
+<h3 class="h3">Good to know</h3><div class="qas"><div class="qa"><h3>Do I need to code?</h3><p>No. Every technical topic has a no-code path.</p></div><div class="qa"><h3>What do we learn from?</h3><p>Existing learning paths from several providers, plus practice workshops and peer feedback.</p></div><div class="qa"><h3>What do I need?</h3><p>A laptop or phone, and curiosity. We help you set up.</p></div></div></div></section>
 <section id="join-en" class="dark"><div class="wrap"><h2>Join the first circle</h2><div class="joinbox"><div class="jr"><span class="ic" aria-hidden="true"><svg
  
   xmlns="http://www.w3.org/2000/svg"
